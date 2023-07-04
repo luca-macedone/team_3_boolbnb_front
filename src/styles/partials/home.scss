@@ -1,6 +1,23 @@
 @import "./variables";
 
-.search{
+.search_box {
     height: 60px;
     padding: 1rem;
+    width: 75%;
+    background: $bnb-primary;
+    position: relative;
+    bottom: 1rem;
+}
+
+.search_input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+}
+
+.btn_search {
+    background: $bnb-accent;
+    margin-left: 1rem;
+    border: none;
+    padding: 0.5rem 1rem;
 }
