@@ -5,15 +5,11 @@ export default {
 }
 </script>
 <template>
-
-<nav class="navbar bg-light">
-  <div class="container">
+  <nav class="navbar">
     <a class="navbar-brand" href="#">
-      <img src="../../public/missing_image_replacement.webp" alt="Boolbnb" height="50">
+      <img height="120" src="../../public/full_logo_horizontal.svg" alt="">
     </a>
-  </div>
-</nav>
-
+  </nav>
 </template>
 
 <style lang="sass" scoped>
