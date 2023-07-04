@@ -6,7 +6,11 @@ export default {
 <template>
   <header class="shadow">
 
+    
     <div class="offcanvas_navbar p-2 shadow d-flex justify-content-start align-items-center gap-3">
+      
+      <img class="logo_wrapper" src="../../public/full_logo_horizontal.svg" alt="">
+
             <a class="d-xl-none btn offcanvas_button" data-bs-toggle="offcanvas" href="#offcanvas" role="button"
                 aria-controls="offcanvasExample">
                 <i class="fa-solid fa-bars fa-2x"></i>
