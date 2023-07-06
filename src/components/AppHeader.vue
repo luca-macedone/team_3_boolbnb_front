@@ -6,9 +6,6 @@ export default {
 <template>
   <header class="shadow">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-      <div id="logo" class="img-wrapper">
-        <img  class="logo_wrapper" src="../../public/logo_horizontal.svg" alt="">
-      </div>
       <div class="dropdown">
         <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
@@ -19,6 +16,12 @@ export default {
           <li><a  href="http://127.0.0.1:8000/register" class="dropdown-item bg-transparent">Register</a></li>          
         </ul>
       </div>
+      <router-link class="text-decoration-none" :to="{ 'name': 'HomeView' }">
+        <div class="logo_wrapper ms-0"></div>
+          <!--<img class="logo_wrapper" src="../../public/logo_horizontal.svg" alt="">-->
+        </router-link>
+
+      <div></div>
     </div>
   </header>
 </template>
