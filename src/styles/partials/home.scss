@@ -20,3 +20,99 @@
 .search_icon{
     color: $bnb-light;
 }
+
+
+.card-img {
+    height: 100%;
+  }
+  
+  .card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card:hover .card-img-overlay {
+    opacity: 1;
+  }
+  
+  .card-title {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+  }
+  
+  .card-body {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .card:hover .card-body {
+    opacity: 1;
+  }
+  
+  .card-text {
+    color: $bnb-light;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+
+  .back_btn {
+    background-color: $bnb-dark;
+    color: $bnb-light;
+    padding: 0.5rem 1.2rem;
+    transition: 0.25s all ease-in-out;
+    border-radius: 0.75rem;
+    &:hover {
+        background-color: $bnb-accent;
+        color: $bnb-dark;
+        // scale: 1.2;
+        scale: 1.08;
+    }
+}
+
+.back_btn_card {
+    background-color: $bnb-light;
+    color: $bnb-dark;
+    padding: 0.5rem 1.2rem;
+    transition: 0.25s all ease-in-out;
+    border-radius: 0.75rem;
+    &:hover {
+        background-color: $bnb-accent;
+        color: $bnb-dark;
+        // scale: 1.2;
+        scale: 1.08;
+    }
+}
+
+.most_header{
+
+    font-weight: $bnb-w-bold;
+}
+
+.margin_negative{
+    margin-right: -3rem;
+}
+
+.margin_negative_start{
+    margin-left: -3rem;
+}
+
+.my_card{
+    box-shadow: 1px 3px 8px rgba($bnb-dark, 0.4);
+
+}
