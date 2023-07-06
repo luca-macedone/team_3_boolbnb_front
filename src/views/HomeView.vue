@@ -5,67 +5,43 @@ export default {
 </script>
 
 <template>
-    <div class="container pt-5 ">
-
-        <!-- carousel ----------------------->
-
-        <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="false">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
 
 
-                <!-- <div v-for="apartment in apartments" class="carousel-item active d-flex justify-content-center bg-white"> 
-                    <img src="{{ apartment.image }}" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ apartment.title }}</h5>
-                    </div>
-                </div> -->
-
-                <div class="carousel-item active d-flex justify-content-center bg-white rounded-3">
-                    <img src="../../public/full_logo_horizontal.svg" class="d-block w-25" alt="...">
-                    <div class="carousel-caption d-none d-md-block text-black">
-                        <h2>First slide label</h2>
-                    </div>
-                </div>
-
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bg-black rounded-3 p-1" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon bg-black rounded-3 p-1" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+    <div class="row">
+        <div class="col-12 img-wrapper-jumbo">
+            <img src="../../public/jumbotron-home.jpg" alt="jumbotron house image" class="img-fluid">
+           
         </div>
-
-        <!-- search ------------------>
-
+        
+    <!-- search ------------------>        
         <div class="d-flex justify-content-center">
-            <div class="d-flex align-items-center rounded-3 shadow search_box ">
-                <img class="pe-3" height="30" src="../../public/pin_only.svg" alt="">
+            <div class="d-flex align-items-center rounded-3 shadow gap-3 search_box ">
+                <img class="pe-3" height="30" src="../../public/internal/pin_only.svg" alt="">
                 <input class=" search_input rounded-3 shadow " type="search" name="search" id="search"
                     placeholder="  Where we go?">
-                <button class="btn_search rounded-3 shadow">SEARCH</button>
+                    <div class="col d-flex justify-content-between py-3">
+                        <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
+                            href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" class="search_icon" viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                            Search
+                        </a>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+
+      
+ 
 
         <!-- card display ---------------------->
 
         <div class="row g-3 mt-3">
 
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-6">
                 <div class="card m-auto p-3 m-0 w-100">
-                    <img src="../../public/pin_only.svg" class="card-img-top" alt="...">
+                    <img src="../../public/internal/pin_only.svg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -74,20 +50,9 @@ export default {
                     </div>
                 </div>         
             </div>
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-6">
                 <div class="card m-auto p-3 m-0 w-100">
-                    <img src="../../public/pin_only.svg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>         
-            </div>
-            <div class="col-12 col-lg-4">
-                <div class="card m-auto p-3 m-0 w-100">
-                    <img src="../../public/pin_only.svg" class="card-img-top" alt="...">
+                    <img src="../../public/internal/pin_only.svg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -97,10 +62,19 @@ export default {
                 </div>         
             </div>
             
+            
 
         </div>
 
     </div>
 </template>
 
-<style lang="scss" scoped>@use '../styles/app.scss';</style>
+<style lang="scss">
+@use '../styles/app.scss';
+
+
+
+
+
+
+</style>
