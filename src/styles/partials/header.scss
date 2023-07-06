@@ -60,18 +60,20 @@
     }
 }
 
-.offcanvas_button {
-    // background-color: $bnb-light;
-    color: $bnb-dark;
-    border: none;
-    border-radius: 0.75rem;
-    &:hover {
-        // background-color: transparent;
-        color: $bnb-accent;
+.dropdown{
+            a{
+            background-color: $bnb_primary;
+            color: $bnb-dark;
+            border: none;
+            border-radius: 0.75rem;
+            &:hover {
+                background-color: transparent;
+                color: $bnb-accent;
+            }
+        }
     }
-}
+    // background-color: $bnb-light;
 
-.offcanvas-body,
 .sidebar_menu ul {
     margin-bottom: 0;
 
