@@ -4,7 +4,7 @@ body {
     font-family: "Open Sans", sans-serif;
 
     background-color: $bnb-light;
-    background-image: url("public/internal/bg_wave_green.svg");
+    background-image: url("/bg_wave_green.svg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,6 +14,7 @@ body {
 .back_btn {
     background-color: $bnb-dark;
     color: $bnb-light;
+    border: 2px solid $bnb-accent;
     padding: 0.5rem 1.2rem;
     transition: 0.25s all ease-in-out;
     border-radius: 0.75rem;
