@@ -5,16 +5,16 @@ export default {
 </script>
 
 <template>
-    <div class="row">
+    <div class="d-flex flex-column">
         <div class="col-12 img-wrapper-jumbo">
-            <img src="../../public/jumbotron-home.jpg" alt="jumbotron house image" class="img-fluid">
+            <img src="../../jumbotron-home.jpg" alt="jumbotron house image" class="">
 
         </div>
 
         <!-- search ------------------>
         <div class="d-flex justify-content-center">
             <div class="d-flex align-items-center justify-content-between rounded-3 shadow gap-3 search_box_home ">
-                <img class="pe-3" height="30" src="/pin_only.svg" alt="">
+                <img class="" height="30" src="/pin_only.svg" alt="">
                 <input class="input rounded-3 shadow w-50 " type="search" name="search" id="search"
                     placeholder="Where we go?">
                     <span>
