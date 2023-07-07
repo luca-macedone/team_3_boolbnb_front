@@ -5,6 +5,7 @@ body {
 
     background-color: $bnb-light;
     background-image: url("/bg_wave_green.svg");
+
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,6 +26,7 @@ body {
         scale: 1.08;
     }
 }
+
 // a {
 //     text-decoration: none;
 //     color: $bnb-dark;

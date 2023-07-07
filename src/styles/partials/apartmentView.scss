@@ -1,0 +1,56 @@
+@import "./variables.scss";
+
+
+.title_apartment {
+  color: $bnb-dark;
+
+  h1 {
+    font-weight: bolder;
+  }
+}
+
+.img_apartment {
+  .card_shadow {
+    box-shadow: 1px 3px 8px rgba(48, 48, 48, 0.4);
+    aspect-ratio: 16/9;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+  }
+
+}
+
+.card_show {
+  color: $bnb-dark;
+  height: 100%;
+  background-color: $bnb-light;
+  border-radius: 0.75rem;
+  box-shadow: 1px 3px 8px rgba(48, 48, 48, 0.4);
+
+
+  .hr_margin {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+.card_maps {
+  box-shadow: 1px 3px 8px rgba(48, 48, 48, 0.4);
+  border-radius: 0.75rem;
+
+  .gmaps {
+    border-radius: 0.75rem;
+
+    iframe {
+      border-radius: 0.75rem;
+      height: 400px;
+
+      width: 100%;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 300px;
+      }
+    }
+  }
+}
