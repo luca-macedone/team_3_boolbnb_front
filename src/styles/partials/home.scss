@@ -119,6 +119,7 @@
 
 
 .img-wrapper-jumbo {
+
     overflow: hidden;
 
     img {
@@ -128,4 +129,14 @@
 
 .row_jumbo{
     max-width: 100vw;
+}
+
+.dashboard_jumbotron {
+  background-color: $bnb-light;
+  // background-image: url("/public/storage/internal/bg_wave.svg");
+  background-image: url("../../../public/internal/wave_animated.svg");
+  background-repeat: no-repeat;
+  background-position: 180deg;
+  background-size: cover;
+  background-attachment: fixed;
 }
