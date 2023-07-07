@@ -7,22 +7,28 @@ export default {
     return {
       user: null,
       logged_in: false,
-      base_API: 'http://127.0.0.1:8000/',
-      user_endpoint: 'api/user/details',
+      // base_API: 'http://127.0.0.1:8000/',
+      // user_endpoint: 'api/user/details',
       user_details_url: 'http://127.0.0.1:8000/api/user/details',
     }
   },
   methods: {
-    get_user(url) {
-      
-      axios.get(url)
+    get_user() {
+      delete axios.defaults.headers.common['X-Requested-With'];
+      axios({
+        method: 'get',
+        url: this.user_details_url,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+        }
+      })
         .then(response => {
           console.log(response);
         })
     }
   },
   mounted() {
-    this.get_user(this.user_details_url);
+    this.get_user();
     //console.log(url);
     /*axios.get(url)
         .then(response => {
@@ -46,7 +52,8 @@ export default {
 <template>
   <header class="shadow">
     <div class="container-fluid">
-      <router-link class="text-decoration-none d-flex justify-content-between align-items-center" :to="{ 'name': 'HomeView' }">
+      <router-link class="text-decoration-none d-flex justify-content-between align-items-center"
+        :to="{ 'name': 'HomeView' }">
         <div v-if="this.user">
           <p>Ciccio</p>
         </div>
