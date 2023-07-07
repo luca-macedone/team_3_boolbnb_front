@@ -36,6 +36,27 @@
         text-decoration: none;
     }
 }
+header{
+    background-color: $bnb-primary;
+}
+.search_input:focus{
+    background-color: $bnb_accent;
+}
+.logo_wrapper {
+    width: 250px;
+    aspect-ratio: 2.25 / 1;
+    // overflow: hidden;
+    background-image: url("../../../public/logo_horizontal.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    margin-left: calc(50% - 125px - 52px);
+
+    @media screen and (min-width: 1200px) {
+        margin-left: calc(50% - 125px);
+    }
+}
 
 .sidebar_menu {
     background-color: $bnb-light;
@@ -60,41 +81,18 @@
     }
 }
 
-.offcanvas_button {
-    // background-color: $bnb-light;
-    color: $bnb-dark;
-    border: none;
-    border-radius: 0.75rem;
-    &:hover {
-        // background-color: transparent;
-        color: $bnb-accent;
-    }
-}
-
-.offcanvas-body,
-.sidebar_menu ul {
-    margin-bottom: 0;
-
-    li {
-        padding: 0.5rem;
-        list-style: none;
-        width: 100%;
-        border-bottom: 0.15rem solid transparent;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        transition: 0.25s border-bottom ease-in-out;
-        a {
+.dropdown{
+            a{
+            background-color: $bnb_primary;
             color: $bnb-dark;
-            text-decoration: none;
-        }
-        &:hover {
-            a {
-                // color: $bnb-light;
+            border: none;
+            border-radius: 0.75rem;
+            &:hover {
+                background-color: transparent;
+                color: $bnb-accent;
             }
-            // color: $bnb-light;
-            border-bottom: 0.15rem solid $bnb-primary;
-            // border-radius: 0.25rem;
         }
     }
-}
+    // background-color: $bnb-light;
+
+

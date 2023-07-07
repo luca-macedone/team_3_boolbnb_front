@@ -16,9 +16,9 @@ export default {
     <!-- search ------------------>        
         <div class="d-flex justify-content-center">
             <div class="d-flex align-items-center rounded-3 shadow gap-3 search_box ">
-                <img class="pe-3" height="30" src="../../public/internal/pin_only.svg" alt="">
-                <input class=" search_input rounded-3 shadow " type="search" name="search" id="search"
-                    placeholder="  Where we go?">
+                <img class="pe-3" height="30" src="../../public/pin_only.svg" alt="">
+                <input class="search_input rounded-3 shadow" type="search" name="search" id="search"
+                    placeholder="Where are you going now?">
                     <div class="col d-flex justify-content-between py-3">
                         <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
                             href="#">
@@ -36,6 +36,7 @@ export default {
             <h2 class="text-center most_header my-2 margin_negative">I più cercati di <img src="../../public/internal/logo_horizontal.svg" class="margin_negative_start" alt=""></h2>
 
         <!-- card display ---------------------->
+
 
     <div class="row g-3 mt-3">
         <div class="col-12 col-lg-4">

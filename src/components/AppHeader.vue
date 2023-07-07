@@ -5,34 +5,25 @@ export default {
 </script>
 <template>
   <header class="shadow">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="dropdown">
+        <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fa-solid fa-bars fa-2x"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="http://127.0.0.1:8000/login" class="dropdown-item bg-transparent">Login</a></li>
+          <li><a  href="http://127.0.0.1:8000/register" class="dropdown-item bg-transparent">Register</a></li>          
+        </ul>
+      </div>
+      <router-link class="text-decoration-none" :to="{ 'name': 'HomeView' }">
+        <div class="logo_wrapper ms-0"></div>
+          <!--<img class="logo_wrapper" src="../../public/logo_horizontal.svg" alt="">-->
+        </router-link>
 
-    
-    <div class="offcanvas_navbar p-2 shadow d-flex justify-content-start align-items-center gap-3">
-      
-      <img class="logo_wrapper" src="../../public/full_logo_horizontal.svg" alt="">
-
-            <a class="d-xl-none btn offcanvas_button" data-bs-toggle="offcanvas" href="#offcanvas" role="button"
-                aria-controls="offcanvasExample">
-                <i class="fa-solid fa-bars fa-2x"></i>
-            </a>
-            <div class="logo_wrapper"></div>
-        </div>
-        <div class="offcanvas offcanvas-start d-xl-none" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-            <div class="offcanvas-header d-flex justify-content-end">
-                <h5 class="offcanvas-title" id="offcanvasLabel">Boolbnb</h5>
-                <button type="button" class="btn-close offcanvas_button" data-bs-dismiss="offcanvas" aria-label="Close">ciao</button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="d-flex flex-column align-items-start justify-content-start gap-3 ps-0">
-                   <div>ciao</div>
-                </ul>
-            </div>
-        </div>
-        
-      </header>
-
-
-
+      <div></div>
+    </div>
+  </header>
 </template>
 
 <style lang="sass" scoped>
