@@ -11,19 +11,7 @@ body {
     min-height: 100vh;
 }
 
-.back_btn {
-    background-color: $bnb-dark;
-    color: $bnb-light;
-    padding: 0.5rem 1.2rem;
-    transition: 0.25s all ease-in-out;
-    border-radius: 0.75rem;
-    &:hover {
-        background-color: $bnb-accent;
-        color: $bnb-dark;
-        // scale: 1.2;
-        scale: 1.08;
-    }
-}
+
 // a {
 //     text-decoration: none;
 //     color: $bnb-dark;
