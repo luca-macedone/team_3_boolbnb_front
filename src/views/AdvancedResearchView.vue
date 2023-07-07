@@ -1,6 +1,40 @@
 <script>
+import axios from 'axios';
 export default {
     name: "SearchView",
+    data() {
+        return {
+            apartments: null,
+            loading: true,
+            base_API: 'http://127.0.0.1:8000/',
+            store: 'storage/',
+        }
+    },
+    methods: {
+        getImageFromPath(path) {
+            console.log(this.base_API + 'storage/' + path);
+            return this.base_API + 'storage/' + path;
+        },
+    },
+    mounted() {
+        const url = this.base_API + 'api/apartments/';
+        console.log(url);
+        axios.get(url)
+            .then(response => {
+                console.log(response);
+                if (response.data.success) {
+                    this.apartments = response.data.apartments.data;
+                    console.log(this.apartments);
+                    this.loading = true;
+                } else {
+                    this.$router.push({ name: 'NotFound' })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                this.loading = false;
+            });
+    },
 }
 </script>
 
@@ -12,7 +46,8 @@ export default {
 
                 <img class="pe-3" height="30" src="/pin_only.svg" alt="">
 
-                <input class="input rounded-3 shadow me-2" type="search" name="search" id="search" placeholder="  Where we go?">
+                <input class="input rounded-3 shadow me-2" type="search" name="search" id="search"
+                    placeholder="  Where we go?">
 
                 <div class="col d-flex justify-content-between py-3">
                     <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow" href="#">
@@ -20,7 +55,7 @@ export default {
                         Search
                     </a>
                 </div>
-                
+
             </div>
 
             <span>
@@ -78,6 +113,35 @@ export default {
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row m-0">
+            <div v-for="apartment in apartments" class="col-12 col-lg-4">
+                <div class="card h-100 mb-3 p-3 card_shadow">
+
+                    <div class="h-100 w-100 d-flex flex-column">
+                        <div class="d-flex flex-wrap flex-md-row justify-content-between gap-3 p-1 h-100">
+                            <div class="list_img_wrapper">
+                                <img class="w-100 " height="200" :src="getImageFromPath(apartment.image)"  alt="{{ $apartment.title }}" />
+                            </div>
+                            <div>
+
+                                <div class="fw-semibold">
+                                    {{ apartment.title }}
+                                </div>
+
+                                <hr class="hr_margin_apartment justify-content-center">
+
+                                <div class="fst-italic">
+                                    {{ apartment.full_address }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
