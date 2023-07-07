@@ -5,30 +5,30 @@ export default {
   name: 'AppHeader',
   data() {
     return {
-      user: null,
-      logged_in: false,
+      // user: null,
+      // logged_in: false,
       // base_API: 'http://127.0.0.1:8000/',
       // user_endpoint: 'api/user/details',
-      user_details_url: 'http://127.0.0.1:8000/api/user/details',
+      // user_details_url: 'http://127.0.0.1:8000/api/user/details',
     }
   },
   methods: {
-    get_user() {
-      delete axios.defaults.headers.common['X-Requested-With'];
-      axios({
-        method: 'get',
-        url: this.user_details_url,
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-        }
-      })
-        .then(response => {
-          console.log(response);
-        })
-    }
+    // get_user() {
+    //   delete axios.defaults.headers.common['X-Requested-With'];
+    //   axios({
+    //     method: 'get',
+    //     url: this.user_details_url,
+    //     headers: {
+    //       'X-Requested-With': 'XMLHttpRequest',
+    //     }
+    //   })
+    //     .then(response => {
+    //       console.log(response);
+    //     })
+    // }
   },
   mounted() {
-    this.get_user();
+    // this.get_user();
     //console.log(url);
     /*axios.get(url)
         .then(response => {
@@ -54,10 +54,10 @@ export default {
     <div class="container-fluid">
       <router-link class="text-decoration-none d-flex justify-content-between align-items-center"
         :to="{ 'name': 'HomeView' }">
-        <div v-if="this.user">
+        <!-- <div v-if="this.user">
           <p>Ciccio</p>
-        </div>
-        <div v-else class="d-flex justify-content-between align-items-center text-dark">
+        </div> -->
+        <div class="d-flex justify-content-between align-items-center text-dark">
           <i class="fa-solid fa-circle-user fa-2x"></i>
           <p class="mb-0 ms-3">Login/Register</p>
         </div>
