@@ -52,8 +52,9 @@ export default {
 <template>
   <header class="shadow">
     <div class="container-fluid">
-      <router-link class="text-decoration-none d-flex justify-content-between align-items-center"
-        :to="{ 'name': 'HomeView' }">
+      <div class="row">
+      <div class="text-decoration-none d-flex justify-content-between align-items-center">
+        <router-link :to="{ 'name': 'HomeView' }">
         <div v-if="this.user">
           <p>Ciccio</p>
         </div>
@@ -61,10 +62,12 @@ export default {
           <i class="fa-solid fa-circle-user fa-2x"></i>
           <p class="mb-0 ms-3">Login/Register</p>
         </div>
+      </router-link>
+      </div>
         <div class="logo_wrapper"></div>
         <!--<img class="logo_wrapper" src="../../public/logo_horizontal.svg" alt="">-->
-      </router-link>
-      <div></div>
+      </div>
+      
     </div>
   </header>
 </template>

@@ -7,11 +7,10 @@ export default {
 <template>
   <!-- footerone -->
 
-  <footer>
-    <div class="row flex-wrap">
-      <div class="col-12 up_col">
+  <footer class="">
+    
         <div class="container">
-          <div class="row my-5">
+          <div class="row my-5 pt-5">
             <div class="col-3">
               <h2>BOOL BNB</h2>
 
@@ -40,13 +39,38 @@ export default {
 
 
             </div>
-            <div class="col-6">
+            <div class="col-3">
               <h2>MADE BY</h2>
 
-              <ul>
+              <ul class="d-flex flex-column gap-3 mt-4">
+                <li><a href="#">Luca Macedone</a></li>
+                <li><a href="#">Luca Ruboni</a></li>
+                <li><a href="#">Roberto Nesta</a></li>
+                <li><a href="#">Fabio Delli</a></li>
+                <li><a href="#">Daniel Oddo</a></li>
 
 
               </ul>
+            </div>
+
+            <div class="col-3">
+              <div class="d-flex flex-wrap gap-3">
+                <div class="img-wrapper rounded_img">
+                <img class="object-fit" src="/ruboni.jpeg" alt="luca ruboni">
+                </div>
+                <div class="img-wrapper rounded_img">
+                <img class="object-fit" src="/macedone.jpeg" alt="luca macedone">
+                </div>
+                <div class="img-wrapper rounded_img">
+                <img class="object-fit" src="/nesta.jpeg" alt="roberto nesta">
+                </div>
+                <div class="img-wrapper rounded_img">
+                <img class="object-fit" src="/delli.jpeg" alt="fabio delli">
+                </div>
+                <div class="img-wrapper rounded_img">
+                <img class="object-fit" src="/oddo.jpeg" alt="daniel oddo">
+                </div>
+              </div>
 
 
             </div>
@@ -54,8 +78,7 @@ export default {
 
 
           </div>
-        </div>
-      </div>
+       
       <div class="col down_col d-flex justify-content-between">
 
         <div class="container">
@@ -70,7 +93,7 @@ export default {
 
               <div class="col d-flex justify-content-center py-3 w-100">
                 <a type="button"
-                  class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center" href="#">
+                  class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center" href="http://127.0.0.1:8000">
                   Sign up Now!
                 </a>
               </div>
@@ -83,11 +106,7 @@ export default {
                 <span class="align-self-center">Supporto e Risorse</span>
 
 
-                <!--   <ul class="d-flex justify-content-between list-unstyled gap-4 h-100 align-items-center">
-                        <li class="vertical_align align-self-center"><i class="fa-solid fa-globe"></i> Italiano (IT)</li>
-                        <li class="vertical_align align-self-center">€ EUR</li>
-                        <li class="vertical_align align-self-center">Supporto e Risorse</li>
-                      </ul> -->
+               
               </div>
 
             </nav>
@@ -100,6 +119,8 @@ export default {
     </div>
   </footer>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
 
 
