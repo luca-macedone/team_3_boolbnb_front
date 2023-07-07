@@ -9,7 +9,7 @@ export const state = reactive({
     base_url: 'http://127.0.0.1:8000/',
     projects_API: 'api/apartments',
     loading: true,
-    apartments: null,
+    loadings: true,
     error: null,
 
     getApartments(apartmentsUrl) {
@@ -18,7 +18,7 @@ export const state = reactive({
             .then(response => {
                 this.apartments = response.data.results
                 console.log(this.apartments);
-                this.loading = false
+                this.loadings = false
             })
             .catch(error => {
                 console.log(error);
