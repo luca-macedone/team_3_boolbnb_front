@@ -35,6 +35,29 @@ export default {
         </div>
     </div>
 
+    <div class="container-fluid">
+      <div class="p-5 mb-4 rounded-3 mt-3 shadow dashboard_jumbotron mx-5">
+                    <div class="container py-3">
+                        <h1 class="display-5 fw-semibold mb-5">
+                            Benvenut* nella nostra piattaforma di affitto case e appartamenti!
+                        </h1>
+                        <p class="col-md-8 fs-5">
+                            Qui potrai
+                            mettere in affitto le tue
+                            proprietà, modificare i dati del tuo account e gestire tutti i tuoi annunzi in modo semplice e
+                            intuitivo.
+                        </p>
+                       
+                        <div class="d-flex justify-content-between py-3">
+                            <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow" href="#">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                Search
+                            </a>
+                        </div>      
+                    </div>
+                </div>
+    </div>
+
     <div class="container">
             <h2 class="text-center most_header my-2 margin_negative">I più cercati di <img src="../../public/internal/logo_horizontal.svg" class="margin_negative_start" alt=""></h2>
 
