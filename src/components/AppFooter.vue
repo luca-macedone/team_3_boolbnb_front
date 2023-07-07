@@ -14,8 +14,8 @@ export default {
         <ul class="d-flex justify-content-between align-items-center gap-4">
                 <li>Privacy</li>
                 <li>Termini</li>
-                <li>Mappa del sito</li>
-                <li>Dettagli dell'azienda</li>
+                <li>Mappa</li>
+                <li>Dettagli</li>
                 <li>Destinazioni</li>
             </ul>
       </div>

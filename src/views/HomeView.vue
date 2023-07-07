@@ -45,7 +45,7 @@ export default {
                 <div class="card-img-overlay d-flex align-items-end">
                   <h5 class="card-title text-white pl-3 pb-3">Card title</h5>
                 </div>
-                <img src="../../public/internal/pin_only.svg" class="card-img" alt="...">
+                <img src="../../pin_only.svg" class="card-img" alt="...">
                 <div class="card-body">
                   <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -66,7 +66,7 @@ export default {
                 <div class="card-img-overlay d-flex align-items-end">
                   <h5 class="card-title text-white pl-3 pb-3">Card title</h5>
                 </div>
-                <img src="../../public/internal/pin_only.svg" class="card-img" alt="...">
+                <img src="../../pin_only.svg" class="card-img" alt="...">
                 <div class="card-body">
                   <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the
                     card's content.
@@ -87,7 +87,7 @@ export default {
             <div class="card-img-overlay d-flex align-items-end">
               <h5 class="card-title text-white pl-3 pb-3">Card title</h5>
             </div>
-            <img src="../../public/internal/pin_only.svg" class="card-img" alt="...">
+            <img src="../../pin_only.svg" class="card-img" alt="...">
             <div class="card-body">
               <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the
                 card's content.

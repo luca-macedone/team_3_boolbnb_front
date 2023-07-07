@@ -1,26 +1,62 @@
 <script>
+import axios from 'axios';
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  data() {
+    return {
+      user: null,
+      logged_in: false,
+      base_API: 'http://127.0.0.1:8000/',
+      user_endpoint: 'api/user/details',
+      user_details_url: 'http://127.0.0.1:8000/api/user/details',
+    }
+  },
+  methods: {
+    get_user(url) {
+      
+      axios.get(url)
+        .then(response => {
+          console.log(response);
+        })
+    }
+  },
+  mounted() {
+    this.get_user(this.user_details_url);
+    //console.log(url);
+    /*axios.get(url)
+        .then(response => {
+            console.log(response);
+            if (response.data.success) {
+                this.user = response.data.result[0];
+                console.log(response.data.result);
+                this.loading = true;
+            } else {
+                this.$router.push({ name: 'NotFound' })
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            this.loading = false;
+        });*/
+  },
+
 }
 </script>
 <template>
   <header class="shadow">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-      <div class="dropdown">
-        <a class="btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <i class="fa-solid fa-bars fa-2x"></i>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="http://127.0.0.1:8000/login" class="dropdown-item bg-transparent">Login</a></li>
-          <li><a  href="http://127.0.0.1:8000/register" class="dropdown-item bg-transparent">Register</a></li>          
-        </ul>
-      </div>
-      <router-link class="text-decoration-none" :to="{ 'name': 'HomeView' }">
-        <div class="logo_wrapper ms-0"></div>
-          <!--<img class="logo_wrapper" src="../../public/logo_horizontal.svg" alt="">-->
-        </router-link>
-
+    <div class="container-fluid">
+      <router-link class="text-decoration-none d-flex justify-content-between align-items-center" :to="{ 'name': 'HomeView' }">
+        <div v-if="this.user">
+          <p>Ciccio</p>
+        </div>
+        <div v-else class="d-flex justify-content-between align-items-center text-dark">
+          <i class="fa-solid fa-circle-user fa-2x"></i>
+          <p class="mb-0 ms-3">Login/Register</p>
+        </div>
+        <div class="logo_wrapper"></div>
+        <!--<img class="logo_wrapper" src="../../public/logo_horizontal.svg" alt="">-->
+      </router-link>
       <div></div>
     </div>
   </header>
