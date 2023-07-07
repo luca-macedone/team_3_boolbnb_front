@@ -1,7 +1,14 @@
 <script>
 import axios from 'axios';
+import MessageApartment from '../components/MessageApartment.vue'
+import MapSingleApartment from '../components/MapSingleApartment.vue'
+//import tt from "@tomtom-international/web-sdk-services"
 export default {
     name: "DetailedView",
+    components: {
+        MessageApartment,
+        MapSingleApartment
+    },
     data() {
         return {
             apartment: null,
@@ -10,16 +17,31 @@ export default {
             store: 'storage/',
         }
     },
+    methods: {
+        initializeMap() {
+            if (this.apartment) {
+                let center = [this.apartment.longitude, this.apartment.latitude]
+                const map = tt.map({
+                    key: "7tj6HpFmzIL9ehuGRFCkdCQ9dRTvgWkk",
+                    container: "map",
+                    center: center,
+                    zoom: 10,
+                });
+
+                map.on('load', () => {
+                    new tt.Marker().setLngLat(center).addTo(map)
+                })
+            }
+        },
+    },
     mounted() {
         const url = this.base_API + 'api/apartments/' + this.$route.params.slug;
-        console.log(url);
         axios.get(url)
             .then(response => {
-                console.log(response);
                 if (response.data.success) {
                     this.apartment = response.data.result[0];
-                    console.log(response.data.result);
                     this.loading = true;
+                    this.initializeMap();
                 } else {
                     this.$router.push({ name: 'NotFound' })
                 }
@@ -29,18 +51,13 @@ export default {
                 this.loading = false;
             });
     },
-    computed: {
-        googleMapsUrl() {
-            if (this.apartment) {
-                const address = encodeURIComponent(this.apartment.full_address);
-                return `https://maps.google.com/maps?q=${address}&t=&z=5&ie=UTF8&iwloc=&output=embed`;
-            } else {
-                return '';
-            }
-        }
+    computed() {
+        this.initializeMap();
     }
 }
+
 </script>
+
 
 <template>
     <div class="container text-white mt-5">
@@ -90,19 +107,46 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-12">
-                <div class="card card_maps">
-                    <div class="gmaps">
-                        <iframe id="gmap" :src="googleMapsUrl" frameborder="0" scrolling="no" marginheight="0"
-                            marginwidth="0">
-                        </iframe>
-                        <a href="https://www.whatismyip-address.com"></a><br>
-                        <a href="https://www.embedgooglemap.net"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <MapSingleApartment></MapSingleApartment>
+        <MessageApartment></MessageApartment>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 </template>
 
