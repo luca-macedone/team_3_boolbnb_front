@@ -39,7 +39,10 @@ export default {
             <h2 class="text-center most_header my-2 margin_negative">I più cercati di <img src="../../public/internal/logo_horizontal.svg" class="margin_negative_start" alt=""></h2>
 
         <!-- card display ---------------------->
-    <div class="row g-3 mt-3">
+    <div class="row g-3 mt-3 mb-5">
+        
+        
+
         <div class="col-12 col-lg-4">
             <div class="card my_card m-auto p-0 w-100 border-0">
                 <div class="card-img-overlay d-flex align-items-end">

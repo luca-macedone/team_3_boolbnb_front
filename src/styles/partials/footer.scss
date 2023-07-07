@@ -1,2 +1,57 @@
 @import "./variables";
 
+footer{
+   
+ 
+
+
+    h3{
+      color: $bnb-light;
+      font-weight:  $bnb-w-semibold;
+    }
+  
+    ul{
+      padding-left: 0;
+    }
+    li{
+      list-style-type: none;
+      color: $bnb-light;
+      font-size: 0.9rem;
+  
+      a{
+         text-decoration: none;
+         color: $bnb-light;
+         font-weight: 400;
+  
+         &:hover{
+             color: $bnb-tertiary;
+              font-weight: 600;
+         }
+      }
+    }
+   
+    .row{
+      color: $bnb-light;
+    .up_col{
+     background-color: black;
+      
+      
+    }
+    .down_col{
+      background-color: $bnb-dark;
+     
+   
+    }
+   }
+
+
+  }
+
+  .logo_back{
+    height: 10rem;
+    color: $bnb-light;
+  }
+
+  .vertical_align{
+    vertical-align: middle;
+  }
