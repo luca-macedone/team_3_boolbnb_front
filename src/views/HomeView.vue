@@ -40,6 +40,7 @@ export default {
 
     <!-- card display ---------------------->
     <div class="row g-3 mt-3">
+
       <div class="col-12 col-lg-4">
         <div class="card my_card m-auto p-0 w-100 border-0">
           <div class="card-img-overlay d-flex align-items-end">
@@ -61,10 +62,12 @@ export default {
                 </svg>
                 View Apartment
               </a>
+
             </div>
 
           </div>
         </div>
+
       </div>
       <div class="col-12 col-lg-4">
         <div class="card my_card m-auto p-0 w-100 border-0">
@@ -87,10 +90,12 @@ export default {
                 </svg>
                 View Apartment
               </a>
+
             </div>
 
           </div>
         </div>
+
       </div>
       <div class="col-12 col-lg-4">
         <div class="card my_card m-auto p-0 w-100 border-0">
@@ -114,6 +119,7 @@ export default {
               View Apartment
             </a>
           </div>
+
         </div>
       </div>
     </div>
