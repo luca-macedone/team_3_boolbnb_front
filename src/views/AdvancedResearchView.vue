@@ -1,78 +1,42 @@
 <script>
 import axios from 'axios';
+import { state } from '../state.js';
 export default {
     name: "SearchView",
     data() {
         return {
-            apartments: null,
+            state,
+            // apartments: null,
             loading: true,
             base_API: 'http://127.0.0.1:8000/',
             store: 'storage/',
             tomTom_API: 'https://api.tomtom.com/search/2/search/',
             key: '.json?key=gS8mw4nOWKsFSgJLqBsDJopb3q9ql31M&limit=1',
             search: '',
-            range: '&radius=20000',
-            btmRightPointLat: '',
-            btmRightPointLong: '',
-            topLeftPointLat: '',
-            topLeftPointLong: '',
-            constrainedApartmentsAPI: 'http://127.0.0.1:8000/api/apartments',
-
-        }
-    },
-    methods: {
-        getImageFromPath(path) {
-            console.log(this.base_API + 'storage/' + path);
-            return this.base_API + 'storage/' + path;
-        },
-        getGps(fullAddress) {
-            axios.get(this.tomTom_API + this.search + this.key)
-
-                .then(response => {
-                    /* console.log(response.data.results[0].viewport); */
-                    this.btmRightPointLat = response.data.results[0].boundingBox.btmRightPoint.lat
-                    this.btmRightPointLong = response.data.results[0].boundingBox.btmRightPoint.lon
-                    this.topLeftPointLat = response.data.results[0].boundingBox.topLeftPoint.lat
-                    this.topLeftPointlong = response.data.results[0].boundingBox.topLeftPoint.lon
-                    this.getApartments()
-                })
-                .catch(error => {
-                    // Gestisci l'errore della chiamata API
-                    console.error(error);
-                });
-
-        },
-
-        getApartments() {
-            axios.get(`${this.constrainedApartmentsAPI}/${this.topLeftPointLat}/${this.topLeftPointlong}/${this.btmRightPointLat}/${this.btmRightPointLong}`)
-                .then(response => {
-                    console.log(response.data.result);
-                    this.apartments = response.data.result
-                })
-                .catch(error => {
-                    // Gestisci l'errore della chiamata API
-                    console.error(error);
-                });
         }
     },
     mounted() {
-        const url = this.base_API + 'api/apartments/';
-        console.log(url);
-        axios.get(url)
-            .then(response => {
-                console.log(response);
-                if (response.data.success) {
-                    this.apartments = response.data.apartments.data;
-                    console.log(this.apartments);
-                    this.loading = true;
-                } else {
-                    this.$router.push({ name: 'NotFound' })
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                this.loading = false;
-            });
+        // const url = this.base_API + 'api/apartments/';
+        // // console.log(url);
+        // axios.get(url)
+        //     .then(response => {
+        //         // console.log(response);
+        //         if (response.data.success) {
+        //             this.apartments = response.data.apartments.data;
+        //             // console.log(this.apartments);
+        //             this.loading = true;
+        //         } else {
+        //             this.$router.push({ name: 'NotFound' })
+        //         }
+        //     })
+        //     .catch(error => {
+        //         // console.log(error);
+        //         console.error(error);
+        //         this.loading = false;
+        //     });
+    },
+    computed: {
+
     },
 }
 </script>
@@ -89,8 +53,8 @@ export default {
                     placeholder="  Where we go?" v-model="search">
 
                 <div class="col d-flex justify-content-between py-3">
-                    <a @click="getGps(query)" type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
-                        href="#">
+                    <a @click="state.getGps(search)" type="button"
+                        class="btn back_btn d-flex align-items-center gap-2 shadow" href="#">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         Search
                     </a>
@@ -137,14 +101,13 @@ export default {
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Services</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-
-                        <div class="modal-dialog modal-dialog-scrollable">
-                            v-for
-                            <span v-for="service in serveces" :key="index">
-                                <label for="service">{{ services.service }}</label>
+                        <!-- ! da settare api call per farci restituire i servizi -->
+                        <!-- <div class="modal-dialog modal-dialog-scrollable">
+                            <span v-for="service in services" :key="index">
+                                <label for="service">{{ service }}</label>
                                 <input type="checkbox" name="service" id="service">
                             </span>
-                        </div>
+                        </div> -->
 
                         <div class="modal-footer">
 
@@ -157,14 +120,14 @@ export default {
     </div>
 
     <div class="container mb-5">
-        <div class="row m-0">
-            <div v-for="apartment in apartments" class="col-12 col-lg-4">
+        <div class="row g-3 m-0">
+            <div v-for="apartment in state.researchedApartments" class="col-12 col-lg-4">
                 <div class="card h-100 mb-3 p-3 card_shadow">
 
                     <div class="h-100 w-100 d-flex flex-column">
                         <div class="d-flex flex-wrap flex-md-row justify-content-between gap-3 p-1 h-100">
                             <div class="list_img_wrapper">
-                                <img class="w-100 " height="200" :src="getImageFromPath(apartment.image)"
+                                <img class="w-100 " height="200" :src="state.getImageFromPath(apartment.image)"
                                     alt="{{ $apartment.title }}" />
                             </div>
                             <div>
