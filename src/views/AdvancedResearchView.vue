@@ -11,12 +11,12 @@ export default {
             tomTom_API: 'https://api.tomtom.com/search/2/search/',
             key: '.json?key=gS8mw4nOWKsFSgJLqBsDJopb3q9ql31M&limit=1',
             search: '',
-            range:'&radius=20000',
-            btmRightPointLat:'',
-            btmRightPointLong:'',
-            topLeftPointLat:'',
-            topLeftPointLong:'',
-            constrainedApartmentsAPI:'http://127.0.0.1:8000/api/apartments',
+            range: '&radius=20000',
+            btmRightPointLat: '',
+            btmRightPointLong: '',
+            topLeftPointLat: '',
+            topLeftPointLong: '',
+            constrainedApartmentsAPI: 'http://127.0.0.1:8000/api/apartments',
 
         }
     },
@@ -26,14 +26,14 @@ export default {
             return this.base_API + 'storage/' + path;
         },
         getGps(fullAddress) {
-            axios.get(this.tomTom_API + this.search + this.key )
-            
+            axios.get(this.tomTom_API + this.search + this.key)
+
                 .then(response => {
                     /* console.log(response.data.results[0].viewport); */
-                    this.btmRightPointLat=response.data.results[0].viewport.btmRightPoint.lat
-                    this.btmRightPointLong=response.data.results[0].viewport.btmRightPoint.lon
-                    this.topLeftPointLat=response.data.results[0].viewport.topLeftPoint.lat
-                    this.topLeftPointlong=response.data.results[0].viewport.topLeftPoint.lon
+                    this.btmRightPointLat = response.data.results[0].boundingBox.btmRightPoint.lat
+                    this.btmRightPointLong = response.data.results[0].boundingBox.btmRightPoint.lon
+                    this.topLeftPointLat = response.data.results[0].boundingBox.topLeftPoint.lat
+                    this.topLeftPointlong = response.data.results[0].boundingBox.topLeftPoint.lon
                     this.getApartments()
                 })
                 .catch(error => {
@@ -43,11 +43,11 @@ export default {
 
         },
 
-        getApartments(){
+        getApartments() {
             axios.get(`${this.constrainedApartmentsAPI}/${this.topLeftPointLat}/${this.topLeftPointlong}/${this.btmRightPointLat}/${this.btmRightPointLong}`)
-            .then(response => {
+                .then(response => {
                     console.log(response.data.result);
-                    this.apartments=response.data.result
+                    this.apartments = response.data.result
                 })
                 .catch(error => {
                     // Gestisci l'errore della chiamata API
