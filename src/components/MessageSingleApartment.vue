@@ -1,88 +1,82 @@
 <script>
+import axios from 'axios';
 export default {
   name: 'MessageSingleApartment',
+  props:
+    [
+      'apartment',
+    ],
 
   data() {
     return {
       name: '',
+      lastname: '',
       email: '',
       message: '',
       loading: false,
       success: false,
       errors: {},
-      showErrorMessage: false,
       base_API: 'http://127.0.0.1:8000/',
     }
   },
   methods: {
     sendForm() {
+      //console.log('2')
       this.loading = true;
       const data = {
-        name: this.name,
         email: this.email,
-        message: this.message
+        message: this.message,
+        apartment_id: this.apartment.id,
       };
 
-      //console.log(data);
-      this.errors = {};
-      axios.put('http://127.0.0.1:8000/api/messages', data).then((response) => {
 
-        if (!response.data.success) {
-          this.errors = response.data.errors;
-        } else {
-          this.name = '';
-          this.lastname = '';
-          this.email = '';
-          this.message = '';
-        }
-        this.success = response.data.success;
-        this.loading = false;
-      });
+      axios.post('http://127.0.0.1:8000/api/messages', data)
+        .then((response) => {
+          if (!response.data.success) {
+            this.errors = response.data.errors;
+          } else {
+            this.email = '';
+            this.message = '';
+          }
+          this.success = response.data.success;
+          console.log(this.success);
+          console.log(response);
+          this.loading = false;
+        })
+        .catch(error => {
+          console.log(error);
+          this.loading = false;
+        });
     },
-    submitForm() {
-      this.loading = true;
-      // ... invia il messaggio ...
-      setTimeout(() => {
-        this.loading = false;
-        this.success = false;
-        this.errors = {};
-        this.showErrorMessage = true;
-        setTimeout(() => {
-          this.showErrorMessage = false;
-        }, 5000);
-      }, 5000);
-    }
-
-
   }
 }
 </script>
 <template>
-  <div class="col-12 col-xl-4 ps-1 col-xl-4 col_message">
+  <div class="col-12 col-xl-4 pe-0 ps-xl-1 ps-0 col_message">
     <div class="card mb-3 card_message">
       <div class="p-3">
         <div v-if="success" class="alert alert-success text-start" role="alert">
           Messaggio inviato con successo!
         </div>
-        <form @submit.prevent="sendForm()">
+        <form @submit.prevent="sendForm">
           <h3 class="text-center"><strong>Message to the owner</strong></h3>
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control mb-4" name="name" id="name" aria-describedby="nameHelpId"
+          <input v-model="name" type="text" class="form-control mb-4" name="name" id="name" aria-describedby="nameHelpId"
             placeholder="Insert your name here">
 
           <label for="surname" class="form-label">Surname</label>
-          <input type="text" class="form-control mb-4" name="surname" id="surname" aria-describedby="surnameHelpId"
-            placeholder="Insert your surname here">
+          <input v-model="lastname" type="text" class="form-control mb-4" name="surname" id="surname"
+            aria-describedby="surnameHelpId" placeholder="Insert your surname here">
 
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" id="floatingInput" placeholder="Insert your email here"
             v-model="email">
 
-          <label for="content" class="form-label">Message</label>
-          <textarea class="w-100 border-0" name="content" id="content" rows="5"
+          <label for="message" class="form-label">Message</label>
+          <textarea v-model="message" class="w-100 border-0" name="message" id="message" rows="5"
             placeholder="insert your message here"></textarea>
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" :disabled="loading" @click="submitForm">{{ loading ?
+            <button type="submit" class="btn btn-primary" :disabled="loading" @click="sendForm">{{ loading ?
               'Sending...' : 'Send' }}</button>
           </div>
         </form>

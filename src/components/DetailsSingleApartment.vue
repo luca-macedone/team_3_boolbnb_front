@@ -24,10 +24,11 @@ export default {
         <div v-else>
           <strong>Apartment not available</strong>
         </div>
-
       </div>
     </div>
+
     <hr class="hr_margin justify-content-center">
+
     <h6><strong>Service:</strong></h6>
     <div v-if="apartment.services.length >= 1">
       <ul class="d-flex list-unstyled col-12 bottom flex-wrap">
