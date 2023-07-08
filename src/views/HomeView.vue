@@ -1,6 +1,9 @@
 <script>
+
+import { RouterLink } from 'vue-router';
 export default {
   name: "HomeView",
+  components: { RouterLink }
 }
 </script>
 
@@ -25,7 +28,8 @@ export default {
           <input class="input rounded-3 shadow" type="date" id="out" name="out">
         </span>
         <div class="d-flex justify-content-between py-3">
-          <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow" href="#">
+          <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
+            href="http://localhost:5174/search">
             <i class="fa-solid fa-magnifying-glass"></i>
             Search
           </a>
