@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "./views/HomeView.vue";
-import SearchView from "./views/AdvancedResearchView.vue";
+import SearchView from "./views/SearchView.vue";
 import DetailedView from "./views/DetailedResearchView.vue";
 import NotFound from "./views/NotFoundView.vue";
 
