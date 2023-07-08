@@ -8,6 +8,16 @@ export default {
             loading: true,
             base_API: 'http://127.0.0.1:8000/',
             store: 'storage/',
+            tomTom_API: 'https://api.tomtom.com/search/2/search/',
+            key: '.json?key=gS8mw4nOWKsFSgJLqBsDJopb3q9ql31M&limit=1',
+            search: '',
+            range:'&radius=20000',
+            btmRightPointLat:'',
+            btmRightPointLong:'',
+            topLeftPointLat:'',
+            topLeftPointLong:'',
+            constrainedApartmentsAPI:'http://127.0.0.1:8000/api/apartments',
+
         }
     },
     methods: {
@@ -15,6 +25,35 @@ export default {
             console.log(this.base_API + 'storage/' + path);
             return this.base_API + 'storage/' + path;
         },
+        getGps(fullAddress) {
+            axios.get(this.tomTom_API + this.search + this.key )
+            
+                .then(response => {
+                    /* console.log(response.data.results[0].viewport); */
+                    this.btmRightPointLat=response.data.results[0].viewport.btmRightPoint.lat
+                    this.btmRightPointLong=response.data.results[0].viewport.btmRightPoint.lon
+                    this.topLeftPointLat=response.data.results[0].viewport.topLeftPoint.lat
+                    this.topLeftPointlong=response.data.results[0].viewport.topLeftPoint.lon
+                    this.getApartments()
+                })
+                .catch(error => {
+                    // Gestisci l'errore della chiamata API
+                    console.error(error);
+                });
+
+        },
+
+        getApartments(){
+            axios.get(`${this.constrainedApartmentsAPI}/${this.topLeftPointLat}/${this.topLeftPointlong}/${this.btmRightPointLat}/${this.btmRightPointLong}`)
+            .then(response => {
+                    console.log(response.data.result);
+                    this.apartments=response.data.result
+                })
+                .catch(error => {
+                    // Gestisci l'errore della chiamata API
+                    console.error(error);
+                });
+        }
     },
     mounted() {
         const url = this.base_API + 'api/apartments/';
@@ -47,10 +86,11 @@ export default {
                 <img class="pe-3" height="30" src="/pin_only.svg" alt="">
 
                 <input class="input rounded-3 shadow me-2" type="search" name="search" id="search"
-                    placeholder="  Where we go?">
+                    placeholder="  Where we go?" v-model="search">
 
                 <div class="col d-flex justify-content-between py-3">
-                    <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow" href="#">
+                    <a @click="getGps(query)" type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
+                        href="#">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         Search
                     </a>
@@ -124,7 +164,8 @@ export default {
                     <div class="h-100 w-100 d-flex flex-column">
                         <div class="d-flex flex-wrap flex-md-row justify-content-between gap-3 p-1 h-100">
                             <div class="list_img_wrapper">
-                                <img class="w-100 " height="200" :src="getImageFromPath(apartment.image)"  alt="{{ $apartment.title }}" />
+                                <img class="w-100 " height="200" :src="getImageFromPath(apartment.image)"
+                                    alt="{{ $apartment.title }}" />
                             </div>
                             <div>
 
