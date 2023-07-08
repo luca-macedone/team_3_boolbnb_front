@@ -96,14 +96,27 @@
 
 .most_header {
   font-weight: $bnb-w-bold;
+  font-size: 1.6rem;
+}
+
+.p_top{
+  padding-top: 5px;
 }
 
 .margin_negative {
   margin-right: -3rem;
+  margin-bottom: 0.5rem;
 }
 
 .margin_negative_start {
   margin-left: -3rem;
+  margin-top: 10px;
+}
+
+.paragraph{
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
 }
 
 .my_card {
@@ -125,10 +138,8 @@
 
 .dashboard_jumbotron {
   background-color: $bnb-light;
-  // background-image: url("/public/storage/internal/bg_wave.svg");
-  background-image: url("/wave_animated.svg");
+  background-image: url("/banner-home.jpg");
   background-repeat: no-repeat;
-  background-position: 180deg;
   background-size: cover;
-  background-attachment: fixed;
+  background-position: center;
 }

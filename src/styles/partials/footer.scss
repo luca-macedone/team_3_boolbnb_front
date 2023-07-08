@@ -2,7 +2,7 @@
 
 footer{
    
- 
+  background-color: $bnb-darker;
 
 
     h3{
@@ -54,4 +54,8 @@ footer{
 
   .vertical_align{
     vertical-align: middle;
+  }
+
+  .rounded_img{
+    border-radius: 50%;
   }

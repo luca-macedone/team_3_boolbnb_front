@@ -9,8 +9,6 @@ body {
 
     background-color: $bnb-light;
     background-image: url("/bg_wave_green.svg");
-
-    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -31,6 +29,18 @@ body {
     }
 }
 
+.hr_margin{
+    margin-left: 8rem;
+    margin-right: 8rem;
+}
+
+.bg_text{
+    background-color: rgba(0, 0, 0, 0.18);
+}
+
+.text_bnb_light{
+    color: $bnb-light;
+}
 // a {
 //     text-decoration: none;
 //     color: $bnb-dark;
