@@ -1,13 +1,14 @@
 <script>
 import axios from 'axios';
-import MessageApartment from '../components/MessageApartment.vue'
+import MessageSingleApartment from '../components/MessageSingleApartment.vue'
 import MapSingleApartment from '../components/MapSingleApartment.vue'
-//import tt from "@tomtom-international/web-sdk-services"
+import DetailsSingleApartment from '../components/DetailsSingleApartment.vue';
 export default {
-    name: "DetailedView",
+    name: "DetailedResearchView",
     components: {
-        MessageApartment,
-        MapSingleApartment
+        MessageSingleApartment,
+        MapSingleApartment,
+        DetailsSingleApartment
     },
     data() {
         return {
@@ -15,6 +16,7 @@ export default {
             loading: true,
             base_API: 'http://127.0.0.1:8000/',
             store: 'storage/',
+            showFullscreen: false,
         }
     },
     methods: {
@@ -25,12 +27,36 @@ export default {
                     key: "7tj6HpFmzIL9ehuGRFCkdCQ9dRTvgWkk",
                     container: "map",
                     center: center,
-                    zoom: 10,
+                    zoom: 15,
                 });
 
                 map.on('load', () => {
                     new tt.Marker().setLngLat(center).addTo(map)
                 })
+
+                var scale = new tt.ScaleControl({
+                    maxWidth: 80,
+                    unit: 'imperial'
+                });
+                map.addControl(scale);
+                scale.setUnit('metric')
+                var nav = new tt.NavigationControl({});
+                map.addControl(nav, 'top-right');
+
+                var attributions = ['<a href="https://www.tomtom.com/mapshare/tools/">Report map issue</a>'];
+                map.getAttributionControl().addAttribution(attributions);
+
+                map.addControl(new tt.FullscreenControl({
+                    container: document.querySelector('fullscreen-overlay')
+                }));
+            }
+        },
+        toggleFullscreen() {
+            this.showFullscreen = !this.showFullscreen;
+            if (this.showFullscreen) {
+                document.documentElement.style.overflow = 'hidden';
+            } else {
+                document.documentElement.style.overflow = '';
             }
         },
     },
@@ -60,9 +86,9 @@ export default {
 
 
 <template>
-    <div class="container text-white mt-5">
+    <div class="container text-white mt-5 p-0">
         <div class="row mt-5 align-items-center">
-            <div class="col-12 title_apartment">
+            <div class="col-12 p-0 title_apartment">
                 <div v-if="apartment">
                     <h1>{{ apartment.title }}</h1>
                     <p>
@@ -72,81 +98,25 @@ export default {
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-xl-8 d-flex justify-content-center pb-4 img_apartment">
-                <div v-if="apartment">
+            <div class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
+                <div v-if="apartment" class="w-100">
                     <div>
-                        <img class="img-fluid card_shadow" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="">
+                        <img class="img-fluid card_shadow" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt=""
+                            @click="toggleFullscreen()">
                     </div>
-                </div>
-                <div v-else>
-                    <strong>No Apartments available</strong>
-                </div>
-            </div>
-            <div class="col-12 col-xl-4 d-flex card_show gap-3 details py-3 card h-100" v-if="apartment">
-                <h3 class="text-center pt-3"><strong>DETAILS:</strong></h3>
-                <ul class="col-6 gap-2 list-unstyled">
-                    <li><strong>Rooms: </strong>{{ apartment.rooms }}</li>
-                    <li><strong>Beds: </strong>{{ apartment.beds }}</li>
-                    <li><strong>Square meters: </strong>{{ apartment.square_meters }}</li>
-                    <li><strong>Bathrooms: </strong>{{ apartment.bathrooms }}</li>
-                </ul>
-                <hr class="hr_margin justify-content-center">
-                <h6><strong>Service:</strong></h6>
-                <div v-if="apartment.services.length >= 1">
-                    <ul class="d-flex list-unstyled col-12 bottom flex-wrap">
-                        <li class="badge bg-success me-1 mb-1 d-flex align-items-center justify-content-center  p-2"
-                            v-for=" service  in  apartment.services ">
-                            {{ service.name }}
-                        </li>
-                    </ul>
-                </div>
-                <div v-else>
-                    <li>
-                        <strong>No services available</strong>
-                    </li>
+                    <div class="fullscreen-overlay" v-if="showFullscreen" @click="toggleFullscreen">
+                        <div class="fullscreen-image-container">
+                            <img class="fullscreen-image" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <MapSingleApartment></MapSingleApartment>
-        <MessageApartment></MessageApartment>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div class="row h-100">
+            <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
+            <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
+        </div>
+        <MapSingleApartment :apartment="apartment"></MapSingleApartment>
     </div>
 </template>
 
