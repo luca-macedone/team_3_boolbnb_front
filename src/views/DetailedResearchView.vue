@@ -98,7 +98,7 @@ export default {
             </div>
         </div>
         <div class="row">
-            <div class="col-12 d-flex justify-content-center ps-0 pb-4 img_apartment">
+            <div class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
                 <div v-if="apartment" class="w-100">
                     <div>
                         <img class="img-fluid card_shadow" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt=""
@@ -114,7 +114,7 @@ export default {
         </div>
         <div class="row h-100">
             <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
-            <MessageSingleApartment></MessageSingleApartment>
+            <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
         </div>
         <MapSingleApartment :apartment="apartment"></MapSingleApartment>
     </div>
