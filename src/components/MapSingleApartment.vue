@@ -16,7 +16,7 @@ export default {
       </div>
       <div v-if="apartment" class="full_adress px-3 pt-1">
         <p>
-          {{ apartment.full_address }}
+          {{ apartment.full_address }}. Lat: {{ apartment.latitude }}, Lon: {{ apartment.longitude }}
         </p>
       </div>
     </div>
