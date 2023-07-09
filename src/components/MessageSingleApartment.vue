@@ -32,13 +32,14 @@ export default {
   methods: {
 
     async submitForm() {
-      console.log('1');
+      //console.log('1');
       const isFormCorrect = await this.v$.$validate()
       if (!isFormCorrect) {
         return;
       }
-      const btn = document.getElementById('my-btn-close');
-      btn.click();
+
+      //const btn = document.getElementById('my_btn_send_message');
+      //btn.click();
       this.sendForm();
     },
 
@@ -50,9 +51,9 @@ export default {
         message: this.message,
         apartment_id: this.apartment.id,
       };
-      console.log('Send form');
-      console.log('Email:', this.email);
-      console.log('Message:', this.message);
+      //console.log('Send form');
+      //console.log('Email:', this.email);
+      //console.log('Message:', this.message);
       axios.post('http://127.0.0.1:8000/api/messages', data)
         .then((response) => {
           if (!response.data.success) {
@@ -71,7 +72,7 @@ export default {
           }, 3000);
         })
         .catch(error => {
-          console.log(error);
+          console.error(error);
           this.loading = false;
         });
 
@@ -86,7 +87,7 @@ export default {
         <div v-if="success" class="alert alert-success text-start" role="alert">
           Messaggio inviato con successo!
         </div>
-        <form @submit.prevent="submitForm">
+        <form>
           <h3 class="text-center"><strong>Message to the owner</strong></h3>
           <!-- <label for="name" class="form-label">Name</label>
           <input v-model="name" type="text" class="form-control mb-4" name="name" id="name" aria-describedby="nameHelpId"
@@ -124,9 +125,10 @@ export default {
 
           <div class="d-flex justify-content-end">
             <!-- <button class="btn btn-secondary" type="button" id="my-btn-close" data-bs-dismiss="offcanvas">Cancel</button> -->
-            <button type="submit" class="btn btn-primary" id="my-btn-close" :disabled="loading" @click="submitForm">{{
-              loading ?
-              'Sending...' : 'Send' }}</button>
+            <button type="submit" class="btn btn-primary" id="my_btn_send_message" :disabled="loading"
+              @click.prevent="submitForm()">{{
+                loading ?
+                'Sending...' : 'Send' }}</button>
           </div>
         </form>
       </div>
