@@ -101,8 +101,8 @@ export default {
             <div class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
                 <div v-if="apartment" class="w-100">
                     <div>
-                        <img class="img-fluid card_shadow" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt=""
-                            @click="toggleFullscreen()">
+                        <img class="img-fluid card border-0 card_shadow"
+                            :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="" @click="toggleFullscreen()">
                     </div>
                     <div class="fullscreen-overlay" v-if="showFullscreen" @click="toggleFullscreen">
                         <div class="fullscreen-image-container">
