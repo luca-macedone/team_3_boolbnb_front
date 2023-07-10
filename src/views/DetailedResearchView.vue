@@ -22,6 +22,7 @@ export default {
     methods: {
         initializeMap() {
             if (this.apartment) {
+                let size = 50
                 let center = [this.apartment.longitude, this.apartment.latitude]
                 const map = tt.map({
                     key: "7tj6HpFmzIL9ehuGRFCkdCQ9dRTvgWkk",
@@ -31,7 +32,28 @@ export default {
                 });
 
                 map.on('load', () => {
-                    new tt.Marker().setLngLat(center).addTo(map)
+
+                    let div = document.createElement('div')
+                    div.innerHTML = `<strong>${this.apartment.title}</strong><br>${this.apartment.full_address}`;
+
+                    let popup = new tt.Popup({
+                        closeButton: false,
+                        offset: size,
+                        anchor: 'bottom'
+                    }).setDOMContent(div)
+
+                    let border = document.createElement('div')
+                    border.className = 'marker-border'
+                    let icon = document.createElement('div')
+                    icon.className = 'marker-icon'
+                    icon.style.backgroundImage = `url('http://127.0.0.1:8000/storage/${this.apartment.image}')`
+                    border.appendChild(icon)
+
+
+                    let marker = new tt.Marker({
+                        element: border
+                    }).setLngLat(center).setPopup(popup)
+                    marker.addTo(map)
                 })
 
                 var scale = new tt.ScaleControl({
@@ -84,11 +106,16 @@ export default {
 
 </script>
 
-
 <template>
     <div class="container text-white mt-5 p-0">
         <div class="row mt-5 align-items-center">
             <div class="col-12 p-0 title_apartment">
+                <div class="pb-3 d-flex justify-content-between align-items-center">
+                    <router-link to="/search" class="btn back_btn d-flex align-items-center gap-2 shadow">
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                        Back
+                    </router-link>
+                </div>
                 <div v-if="apartment">
                     <h1>{{ apartment.title }}</h1>
                     <p>
@@ -120,6 +147,24 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../styles/partials/apartmentView.scss';
+
+.marker-border {
+    background-color: #303030;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.marker-icon {
+    background-position: center;
+    background-size: 49px 49px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0.5px;
+    top: 0.5px;
+    height: 49px;
+    width: 49px;
+}
 </style>

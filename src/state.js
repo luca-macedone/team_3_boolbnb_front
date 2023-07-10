@@ -25,25 +25,9 @@ export const state = reactive({
     range_attribute: '&radius=',
     limit_attribute: '&limit=',
     language_attribute: '&language=',
-    constrainedApartmentsAPI: 'http://127.0.0.1:8000/api/apartments',
 
     getImageFromPath(path) {
-        // console.log(this.base_API + 'storage/' + path);
-        return this.base_url + 'storage/' + path;
-    },
-
-    getApartments(apartmentsUrl) {
-        axios
-            .get(apartmentsUrl)
-            .then(response => {
-                this.apartments = response.data.results
-                // console.log(this.apartments);
-                this.loadings = false
-            })
-            .catch(error => {
-                console.log(error);
-                this.error = error.message
-            })
+        return `${this.base_url}storage/${path}`;
     },
 
     getApartament(apartmentUrl) {
@@ -60,9 +44,10 @@ export const state = reactive({
             })
     },
 
-    getApartments(topLeftPointLat, topLeftPointlong, btmRightPointLat, btmRightPointLong, rooms, beds, selected_services) {
-        axios.get(`${this.constrainedApartmentsAPI}`, {
+    getApartments(generic, topLeftPointLat, topLeftPointlong, btmRightPointLat, btmRightPointLong, rooms, beds, selected_services) {
+        axios.get(this.base_url + this.apartments_endpoint, {
             params: {
+                generic_search: generic,
                 left_lat: topLeftPointLat,
                 left_lon: topLeftPointlong,
                 right_lat: btmRightPointLat,
@@ -74,7 +59,11 @@ export const state = reactive({
         })
             .then(response => {
                 // console.log(response.data.result);
-                this.researchedApartments = response.data.apartments;
+                if (Boolean(generic)) {
+                    this.apartments = response.data.apartments.data;
+                } else {
+                    this.researchedApartments = response.data.apartments.data;
+                }
                 // console.log(this.researchedApartments)
             })
             .catch(error => {
@@ -83,8 +72,20 @@ export const state = reactive({
             });
     },
 
+    /**
+     * Gets the tomtom gps data and send it to getApartments
+     * @param {string} fullAddress 
+     * @param {string} range 
+     * @param {string} rooms 
+     * @param {string} beds 
+     * @param {string} selected_services 
+     */
     getGps(fullAddress, range, rooms, beds, selected_services) {
         // console.log(range);
+        // Reset apartments
+        this.apartments = null;
+        this.researchedApartments = null;
+
         axios.get(this.tomTom_API + fullAddress + this.key + this.range_attribute + range + '000' + this.limit_attribute + '1')
 
             .then(response => {
@@ -93,7 +94,7 @@ export const state = reactive({
                 this.btmRightPointLong = response.data.results[0].boundingBox.btmRightPoint.lon
                 this.topLeftPointLat = response.data.results[0].boundingBox.topLeftPoint.lat
                 this.topLeftPointlong = response.data.results[0].boundingBox.topLeftPoint.lon
-                this.getApartments(this.topLeftPointLat, this.topLeftPointlong, this.btmRightPointLat, this.btmRightPointLong, rooms, beds, selected_services)
+                this.getApartments(false, this.topLeftPointLat, this.topLeftPointlong, this.btmRightPointLat, this.btmRightPointLong, rooms, beds, selected_services)
             })
             .catch(error => {
                 // Gestisci l'errore della chiamata API
