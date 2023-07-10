@@ -89,13 +89,6 @@ export default {
         </div>
         <form>
           <h3 class="text-center"><strong>Message to the owner</strong></h3>
-          <!-- <label for="name" class="form-label">Name</label>
-          <input v-model="name" type="text" class="form-control mb-4" name="name" id="name" aria-describedby="nameHelpId"
-            placeholder="Insert your name here">
-
-          <label for="surname" class="form-label">Surname</label>
-          <input v-model="lastname" type="text" class="form-control mb-4" name="surname" id="surname"
-            aria-describedby="surnameHelpId" placeholder="Insert your surname here"> -->
           <div class="my-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control " id="floatingInput" placeholder="Insert your email here"
@@ -110,7 +103,7 @@ export default {
 
           <div class="mb-3">
             <label for="message" class="form-label">Message</label>
-            <textarea v-model="message" class="w-100 border-0" name="message" id="message" rows="5"
+            <textarea v-model="message" class="w-100 border-0" name="message" id="message" rows="3"
               placeholder="insert your message here"></textarea>
             <div class="text-danger" v-if="v$.message.required.$invalid && v$.message.$error">
               This field is required
