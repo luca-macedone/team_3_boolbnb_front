@@ -25,7 +25,6 @@ export const state = reactive({
     range_attribute: '&radius=',
     limit_attribute: '&limit=',
     language_attribute: '&language=',
-    constrainedApartmentsAPI: 'http://127.0.0.1:8000/api/apartments',
 
     getImageFromPath(path) {
         return `${this.base_url}storage/${path}`;
@@ -46,7 +45,7 @@ export const state = reactive({
     },
 
     getApartments(generic, topLeftPointLat, topLeftPointlong, btmRightPointLat, btmRightPointLong, rooms, beds, selected_services) {
-        axios.get(`${this.constrainedApartmentsAPI}`, {
+        axios.get(this.base_url + this.apartments_endpoint, {
             params: {
                 generic_search: generic,
                 left_lat: topLeftPointLat,
@@ -60,7 +59,7 @@ export const state = reactive({
         })
             .then(response => {
                 // console.log(response.data.result);
-                if (generic) {
+                if (Boolean(generic)) {
                     this.apartments = response.data.apartments.data;
                 } else {
                     this.researchedApartments = response.data.apartments.data;
@@ -73,8 +72,17 @@ export const state = reactive({
             });
     },
 
+    /**
+     * Gets the tomtom gps data and send it to getApartments
+     * @param {string} fullAddress 
+     * @param {string} range 
+     * @param {string} rooms 
+     * @param {string} beds 
+     * @param {string} selected_services 
+     */
     getGps(fullAddress, range, rooms, beds, selected_services) {
         // console.log(range);
+        // Reset apartments
         this.apartments = null;
         this.researchedApartments = null;
 
