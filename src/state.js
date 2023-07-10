@@ -28,22 +28,7 @@ export const state = reactive({
     constrainedApartmentsAPI: 'http://127.0.0.1:8000/api/apartments',
 
     getImageFromPath(path) {
-        // console.log(this.base_API + 'storage/' + path);
-        return this.base_url + 'storage/' + path;
-    },
-
-    getApartments(apartmentsUrl) {
-        axios
-            .get(apartmentsUrl)
-            .then(response => {
-                this.apartments = response.data.results
-                // console.log(this.apartments);
-                this.loadings = false
-            })
-            .catch(error => {
-                console.log(error);
-                this.error = error.message
-            })
+        return `${this.base_url}storage/${path}`;
     },
 
     getApartament(apartmentUrl) {
