@@ -42,12 +42,11 @@ export default {
           <h2>MADE BY</h2>
 
           <ul class="d-flex flex-column gap-3 mt-4">
-            <li class="mac"><a href="#">Luca Macedone</a></li>
-            <li class="rub"><a href="#">Luca Ruboni</a></li>
-            <li class="nes"><a href="#">Roberto Nesta</a></li>
-            <li class="del"><a href="#">Fabio Delli</a></li>
-            <li class="odd"><a href="#">Daniel Oddo</a></li>
-
+            <li class="mac"><a href="https://www.linkedin.com/in/luca-macedone/">Luca Macedone</a></li>
+            <li class="rub"><a href="https://www.linkedin.com/in/luca-ruboni/">Luca Ruboni</a></li>
+            <li class="nes"><a href="https://www.linkedin.com/in/robertonesta/">Roberto Nesta</a></li>
+            <li class="del"><a href="https://www.linkedin.com/in/fabio-delli/">Fabio Delli</a></li>
+            <li class="odd"><a href="https://www.linkedin.com/in/daniel-oddo/">Daniel Oddo</a></li>
 
           </ul>
         </div>
