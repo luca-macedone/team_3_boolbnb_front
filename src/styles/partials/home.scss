@@ -7,6 +7,7 @@
   background: $bnb-primary;
   position: relative;
   bottom: 1rem;
+  box-shadow: 0 2px 6px $bnb-dark;
 }
 
 .input {
@@ -114,7 +115,7 @@
 }
 
 .paragraph{
-  font-weight: 600;
+  font-weight: 800;
   font-size: 1.2rem;
   margin-bottom: 3rem;
 }
@@ -122,6 +123,7 @@
 .my_card {
   box-shadow: 1px 3px 8px rgba($bnb-dark, 0.4);
   min-height: 200px;
+  aspect-ratio: 1.8 / 1.1;
 }
 
 .img-wrapper-jumbo {
@@ -142,4 +144,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+.card_bottom{
+  aspect-ratio: 4;
 }

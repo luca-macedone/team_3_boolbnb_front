@@ -53,21 +53,21 @@ export default {
               </ul>
             </div>
 
-            <div class="col-3">
+            <div class="col-3 col_img_rotation">
               <div class="d-flex flex-wrap gap-3">
-                <div class="img-wrapper rounded_img">
+                <div class="img-wrapper rounded_img img_rotation">
                 <img class="object-fit" src="/ruboni.jpeg" alt="luca ruboni">
                 </div>
-                <div class="img-wrapper rounded_img">
+                <div class="img-wrapper rounded_img img_rotation">
                 <img class="object-fit" src="/macedone.jpeg" alt="luca macedone">
                 </div>
-                <div class="img-wrapper rounded_img">
+                <div class="img-wrapper rounded_img img_rotation">
                 <img class="object-fit" src="/nesta.jpeg" alt="roberto nesta">
                 </div>
-                <div class="img-wrapper rounded_img">
+                <div class="img-wrapper rounded_img img_rotation">
                 <img class="object-fit" src="/delli.jpeg" alt="fabio delli">
                 </div>
-                <div class="img-wrapper rounded_img">
+                <div class="img-wrapper rounded_img img_rotation">
                 <img class="object-fit" src="/oddo.jpeg" alt="daniel oddo">
                 </div>
               </div>
