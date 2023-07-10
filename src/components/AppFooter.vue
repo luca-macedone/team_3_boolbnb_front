@@ -11,69 +11,55 @@ export default {
     
         <div class="container">
           <div class="row my-5 pt-5">
-            <div class="col-3">
-              <h2>BOOL BNB</h2>
+        <div class="col-6 col-lg-3">
+          <h2>BOOL BNB</h2>
 
-              <ul class="d-flex flex-column gap-3 mt-4">
-                <li><a href="#">Advanced search</a> </li>
-                <li><a href="#">Rent an apartment</a> </li>
-                <li><a href="#">Sponsorship</a> </li>
-                <li><a href="#">Home page</a> </li>
-
-
-              </ul>
+          <ul class="d-flex flex-column gap-3 mt-4">
+            <li><a href="#">Advanced search</a> </li>
+            <li><a href="#">Rent an apartment</a> </li>
+            <li><a href="#">Sponsorship</a> </li>
+            <li><a href="#">Home page</a> </li>
 
 
-            </div>
-            <div class="col-3">
-              <h2>CONTACTS</h2>
-
-              <ul class="d-flex flex-column gap-3 mt-4">
-                <li><a href="#"> Terms of Use</a></li>
-                <li><a href="#"> Privacy policy</a></li>
-                <li><a href="#"> BoolBnb maps</a></li>
-                <li><a href="#"> Who we are</a></li>
-                <li><a href="#">Contact Us</a> </li>
-
-              </ul>
+          </ul>
 
 
-            </div>
-            <div class="col-3">
-              <h2>MADE BY</h2>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h2>CONTACTS</h2>
 
-              <ul class="d-flex flex-column gap-3 mt-4">
-                <li><a href="#">Luca Macedone</a></li>
-                <li><a href="#">Luca Ruboni</a></li>
-                <li><a href="#">Roberto Nesta</a></li>
-                <li><a href="#">Fabio Delli</a></li>
-                <li><a href="#">Daniel Oddo</a></li>
+          <ul class="d-flex flex-column gap-3 mt-4">
+            <li><a href="#"> Terms of Use</a></li>
+            <li><a href="#"> Privacy policy</a></li>
+            <li><a href="#"> BoolBnb maps</a></li>
+            <li><a href="#"> Who we are</a></li>
+            <li><a href="#">Contact Us</a> </li>
 
-
-              </ul>
-            </div>
-
-            <div class="col-3">
-              <div class="d-flex flex-wrap gap-3">
-                <div class="img-wrapper rounded_img">
-                <img class="object-fit" src="/ruboni.jpeg" alt="luca ruboni">
-                </div>
-                <div class="img-wrapper rounded_img">
-                <img class="object-fit" src="/macedone.jpeg" alt="luca macedone">
-                </div>
-                <div class="img-wrapper rounded_img">
-                <img class="object-fit" src="/nesta.jpeg" alt="roberto nesta">
-                </div>
-                <div class="img-wrapper rounded_img">
-                <img class="object-fit" src="/delli.jpeg" alt="fabio delli">
-                </div>
-                <div class="img-wrapper rounded_img">
-                <img class="object-fit" src="/oddo.jpeg" alt="daniel oddo">
-                </div>
-              </div>
+          </ul>
 
 
-            </div>
+        </div>
+        <div class="col-6 col-lg-3 mt-5 mt-lg-0">
+          <h2>MADE BY</h2>
+
+          <ul class="d-flex flex-column gap-3 mt-4">
+            <li class="mac"><a href="#">Luca Macedone</a></li>
+            <li class="rub"><a href="#">Luca Ruboni</a></li>
+            <li class="nes"><a href="#">Roberto Nesta</a></li>
+            <li class="del"><a href="#">Fabio Delli</a></li>
+            <li class="odd"><a href="#">Daniel Oddo</a></li>
+
+
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3 mt-5 mt-lg-0 d-flex justify-content-center">
+          <img class="contributors" src="/contributors.png" alt="">
+        </div>
+
+
+      </div>
+
 
 
 
@@ -116,7 +102,6 @@ export default {
         </div>
 
       </div>
-    </div>
   </footer>
 </template>
 <style lang="scss" scoped>
