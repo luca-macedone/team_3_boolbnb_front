@@ -11,6 +11,7 @@ export default {
     
         <div class="container">
           <div class="row my-5 pt-5">
+
         <div class="col-6 col-lg-3">
           <h2>BOOL BNB</h2>
 
@@ -22,7 +23,6 @@ export default {
 
 
           </ul>
-
 
         </div>
         <div class="col-6 col-lg-3">
@@ -36,7 +36,6 @@ export default {
             <li><a href="#">Contact Us</a> </li>
 
           </ul>
-
 
         </div>
         <div class="col-6 col-lg-3 mt-5 mt-lg-0">
