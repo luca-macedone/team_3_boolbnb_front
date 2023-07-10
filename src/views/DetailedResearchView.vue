@@ -111,11 +111,10 @@ export default {
         <div class="row mt-5 align-items-center">
             <div class="col-12 p-0 title_apartment">
                 <div class="pb-3 d-flex justify-content-between align-items-center">
-                    <a type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
-                        :href="`http://localhost:5174/search/`">
+                    <router-link to="/search" class="btn back_btn d-flex align-items-center gap-2 shadow">
                         <i class="fa-solid fa-arrow-left-long"></i>
                         Back
-                    </a>
+                    </router-link>
                 </div>
                 <div v-if="apartment">
                     <h1>{{ apartment.title }}</h1>
