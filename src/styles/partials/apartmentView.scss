@@ -14,8 +14,10 @@
     box-shadow: 1px 3px 8px $bnb-dark;
     width: 100%;
     aspect-ratio: 16/6;
+    object-position: center;
     object-fit: cover;
     border-radius: 0.75rem;
+    background-position: center;
   }
 
   .fullscreen-overlay {
@@ -146,4 +148,11 @@
 .full_adress {
   color: $bnb-dark ;
   background-color: transparent;
+}
+
+.marker-border {
+  background-color: rgb(201, 72, 12);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
