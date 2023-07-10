@@ -1,8 +1,12 @@
 <script>
-import axios from 'axios';
 import { state } from '../state.js';
+import ApartmentCard from '../components/ApartmentCard.vue';
+
 export default {
     name: "SearchView",
+    components: {
+        ApartmentCard,
+    },
     data() {
         return {
             state,
@@ -47,7 +51,7 @@ export default {
 </script>
 
 <template>
-    <div class="p-5 research_banner mt-3">
+    <div class="p-5 research_banner">
         <div class="container py-3 ">
             <h1 class="display-5 fw-semibold m-0">Advanced Research</h1>
             <!-- <p class="col-md-8 fs-4"></p> -->
@@ -55,7 +59,7 @@ export default {
         </div>
     </div>
     <div class="container-fluid body_container p-0" id="advanced_research">
-        <nav class="p-5">
+        <nav class="p-3 p-lg-5">
             <div class="container">
                 <div class="d-flex align-items-center gap-3">
                     <!-- ! da inserire @keyup="state.getSuggestions(search)" una volta che il datalist dei suggerimenti funzionera' -->
@@ -80,7 +84,7 @@ export default {
                         </datalist>
                     </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-end w-100 gap-5">
+                <div class="d-flex justify-content-between align-items-end flex-wrap w-100 gap-5">
                     <div class="d-flex align-items-end gap-3">
                         <div>
                             <button type="button" class="btn searchbar_btn px-5" data-bs-toggle="modal"
@@ -129,32 +133,9 @@ export default {
         </nav>
         <div class="container">
             <div class="row g-3 m-1">
-                <div v-for="apartment in state.researchedApartments" class="col-12 col-md-6 col-lg-4">
-                    <a class="texte-decoration-none" :href="`http://localhost:5174/search/${apartment.slug}`">
-                        <div class="card searched_apartment h-100 mb-3 p-3 card_shadow">
-                            <div class="h-100 w-100 d-flex flex-column">
-                                <div class="d-flex flex-wrap flex-md-row justify-content-between gap-3 p-1 h-100">
-                                    <div class="list_img_wrapper">
-                                        <img class="w-100 " height="200" :src="state.getImageFromPath(apartment.image)"
-                                            alt="{{ $apartment.title }}" />
-                                    </div>
-                                    <div>
-
-                                        <div class="fw-semibold">
-                                            {{ apartment.title }}
-                                        </div>
-
-                                        <hr class="hr_margin_apartment justify-content-center">
-
-                                        <div class="fst-italic">
-                                            {{ apartment.full_address }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <ApartmentCard v-for="apartment in state.researchedApartments" :title="apartment.title"
+                    :beds="apartment.beds" :rooms="apartment.rooms" :full_address="apartment.full_address"
+                    :image="apartment.image" :slug="apartment.slug" />
             </div>
         </div>
     </div>
