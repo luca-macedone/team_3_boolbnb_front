@@ -1,19 +1,21 @@
 <script>
 import { state } from '../state.js';
+import { RouterLink } from 'vue-router';
 export default {
-    name: 'ApartmentCard',
-    props: ['title', 'beds', 'rooms', 'full_address', 'image', 'slug'],
+    name: "ApartmentCard",
+    props: ["title", "beds", "rooms", "full_address", "image", "slug"],
     data() {
         return {
             state,
-        }
-    }
+        };
+    },
+    components: { RouterLink }
 }
 </script>
 
 <template>
     <div class="col-12 col-md-6 col-lg-4 text-decoration-none">
-        <a :href="`http://localhost:5174/search/${slug}`" class="h-100">
+        <RouterLink :to="{ name: 'apartment', params: { slug: slug } }" class="h-100">
             <div class="dashboard_card apartment_card shadow p-4">
                 <img :src="state.getImageFromPath(image)" onerror="this.onerror=null; this.src='/public/missing_img_v2.svg'"
                     class="card-img" :alt="title + ' img'">
@@ -40,7 +42,7 @@ export default {
                 </div>
 
             </div>
-        </a>
+        </RouterLink>
     </div>
 </template>
 

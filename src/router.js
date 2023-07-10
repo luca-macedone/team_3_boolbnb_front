@@ -10,20 +10,24 @@ const router = createRouter({
     // All routes here
     {
       path: "/",
-      name: "HomeView",
+      name: "home",
       component: HomeView,
     },
     {
       path: "/search/:slug",
-      name: "DetailedView",
+      name: "apartment",
       component: DetailedView,
     },
     {
       path: "/search",
-      name: "SearchView",
+      name: "search",
       component: SearchView,
     },
-    { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "not-found",
+      component: NotFound,
+    },
   ],
 });
 

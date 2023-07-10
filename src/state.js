@@ -45,9 +45,10 @@ export const state = reactive({
             })
     },
 
-    getApartments(topLeftPointLat, topLeftPointlong, btmRightPointLat, btmRightPointLong, rooms, beds, selected_services) {
+    getApartments(generic, topLeftPointLat, topLeftPointlong, btmRightPointLat, btmRightPointLong, rooms, beds, selected_services) {
         axios.get(`${this.constrainedApartmentsAPI}`, {
             params: {
+                generic_search: generic,
                 left_lat: topLeftPointLat,
                 left_lon: topLeftPointlong,
                 right_lat: btmRightPointLat,
@@ -59,7 +60,11 @@ export const state = reactive({
         })
             .then(response => {
                 // console.log(response.data.result);
-                this.researchedApartments = response.data.apartments;
+                if (generic) {
+                    this.apartments = response.data.apartments.data;
+                } else {
+                    this.researchedApartments = response.data.apartments.data;
+                }
                 // console.log(this.researchedApartments)
             })
             .catch(error => {
@@ -70,6 +75,9 @@ export const state = reactive({
 
     getGps(fullAddress, range, rooms, beds, selected_services) {
         // console.log(range);
+        this.apartments = null;
+        this.researchedApartments = null;
+
         axios.get(this.tomTom_API + fullAddress + this.key + this.range_attribute + range + '000' + this.limit_attribute + '1')
 
             .then(response => {
@@ -78,7 +86,7 @@ export const state = reactive({
                 this.btmRightPointLong = response.data.results[0].boundingBox.btmRightPoint.lon
                 this.topLeftPointLat = response.data.results[0].boundingBox.topLeftPoint.lat
                 this.topLeftPointlong = response.data.results[0].boundingBox.topLeftPoint.lon
-                this.getApartments(this.topLeftPointLat, this.topLeftPointlong, this.btmRightPointLat, this.btmRightPointLong, rooms, beds, selected_services)
+                this.getApartments(false, this.topLeftPointLat, this.topLeftPointlong, this.btmRightPointLat, this.btmRightPointLong, rooms, beds, selected_services)
             })
             .catch(error => {
                 // Gestisci l'errore della chiamata API
