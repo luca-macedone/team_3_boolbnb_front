@@ -12,6 +12,21 @@ export default {
 	},
 	mounted() {
 		this.state.getApartments(true);
+    const placeholderPhrases = ["Search your next location...", "Find a place to relax...", "Explore and have fun...", "Start a trip and don't mind nothing else..."];
+    const searchInput = document.querySelector(".search_input");
+
+    function getRandomPhrase() {
+      const randomIndex = Math.floor(Math.random() * placeholderPhrases.length);
+      return placeholderPhrases[randomIndex];
+    }
+
+    function rotatePlaceholder() {
+      searchInput.placeholder = getRandomPhrase();
+    }
+
+    // Cambia il placeholder ogni 2 secondi
+    setInterval(rotatePlaceholder, 2000);
+
 	}
 }
 </script>
@@ -29,16 +44,10 @@ export default {
 		<div class="d-flex justify-content-center">
 			<div class="d-flex align-items-center justify-content-between rounded-3 shadow gap-3 search_box_home ">
 				<img class="" height="30" src="/pin_only.svg" alt="">
-				<input class="input rounded-3 shadow w-50 " type="search" name="search" id="search"
-					placeholder="Where we go?">
-				<span>
-					<label class="" for="birthday"></label>
-					<input class="input rounded-3 shadow" type="date" id="in" name="in">
-				</span>
-				<span>
-					<label class=" " for="birthday"></label>
-					<input class="input rounded-3 shadow" type="date" id="out" name="out">
-				</span>
+				<router-link :to="{ name: 'search'}" class="w-100"> <input class="input rounded-3 shadow w-100 search_input" type="search" name="search" id="search"
+					placeholder="Where we go?" >
+          </router-link>
+				
 				<div class="d-flex justify-content-between py-3">
 					<RouterLink type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
 						:to="{ name: 'search' }">
@@ -91,18 +100,18 @@ export default {
 			<div class="row g-3 mt-3 mb-5" v-if="state.apartments">
 
 				<div class="col-12 col-lg-4" v-for="apartment in state.apartments.slice(0, 6)">
-					<div class="card my_card m-auto p-0 w-100 border-0">
+					<div class="card my_card m-auto p-0 w-100 border-0 rounded-1">
 						<div class="card-img-overlay d-flex align-items-end">
 							<h5 class="card-title text-white pl-3 pb-3">{{ apartment.title }}</h5>
 						</div>
-						<img :src="state.getImageFromPath(apartment.image)" class="card-img" alt="...">
+						<img :src="state.getImageFromPath(apartment.image)" class="card-img" alt="..." onerror="this.onerror=null; this.src='/missing_img_v2.svg'">
 						<div class="card-body">
 							<!-- <p class="card-text text-center">
 								{{ apartment.name }}
 							</p> -->
 							<div class="col d-flex justify-content-center py-3">
 								<RouterLink
-									class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center"
+									class="btn back_btn_card d-flex align-items-center gap-2 shadow w-100 justify-content-center"
 									:to="{ name: 'apartment', params: { slug: apartment.slug } }">
 									<svg xmlns="http://www.w3.org/2000/svg" height="1em"
 										viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -118,24 +127,13 @@ export default {
 				</div>
 			</div>
 
-        <div class="container">
-    
-
-
-    
-      
-         
-
-      <!-- card display ---------------------->
-
       
 
-    
-  </div>
+    </div>
 
 
-		</div>
 	</div>
+	
 </template>
 
 <style lang="scss">
