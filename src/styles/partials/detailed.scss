@@ -1,0 +1,9 @@
+.my_alert{
+    background-color: $bnb-dark;
+    border: 1px solid $bnb-accent;
+    display: flex;
+    transition: display 1s;
+}
+.alert_hide:hover > .my_alert{
+    display: none;
+}
