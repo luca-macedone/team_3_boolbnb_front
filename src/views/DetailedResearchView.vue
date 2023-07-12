@@ -71,6 +71,8 @@ export default {
                 map.addControl(new tt.FullscreenControl({
                     container: document.querySelector('fullscreen-overlay')
                 }));
+
+                //console.log(map);
             }
         },
         toggleFullscreen() {
@@ -81,6 +83,34 @@ export default {
                 document.documentElement.style.overflow = '';
             }
         },
+        sendViewData() {
+            axios.get('https://api.ipify.org/?format=json')
+                .then(response => {
+                    const apartmentId = this.apartment.id;
+                    console.log(response);
+                    const data = {
+                        apartment_id: apartmentId,
+                        ip: response.data.ip,
+                    };
+                    console.log(data, 'sto prendendo i dati');
+
+                    axios.post(this.base_API + 'api/views', data)
+                        .then(response => {
+                            if (!response.data.success) {
+                                this.errors = response.data.errors;
+                                console.log(this.errors);
+                            } else {
+                                console.log(data, 'sto passando i dati al db');
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
     },
     mounted() {
         const url = this.base_API + 'api/apartments/' + this.$route.params.slug;
@@ -88,6 +118,7 @@ export default {
             .then(response => {
                 if (response.data.success) {
                     this.apartment = response.data.result[0];
+                    //console.log(response);
                     this.loading = true;
                     this.initializeMap();
                 } else {
@@ -98,9 +129,12 @@ export default {
                 console.log(error);
                 this.loading = false;
             });
+        this.sendViewData();
+        console.log(this.sendViewData);
     },
     computed() {
         this.initializeMap();
+        this.sendViewData()
     }
 }
 
