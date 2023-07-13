@@ -27,6 +27,7 @@ export default{
                     class="d-flex"
                     :to="{ name: 'apartment', params: { slug: apartment.slug } }">
                 <div class="card my_card m-auto p-0 border-0 rounded-1 gap-5 w-100 max_height mb-3 g-3" >
+                    <i class="fa-solid fa-star star"></i>
                     <div class="card-img-overlay d-flex align-items-end">
                         <h5 class="card-title text-white pl-3 pb-3">{{ apartment.title }}</h5>
                     </div>
