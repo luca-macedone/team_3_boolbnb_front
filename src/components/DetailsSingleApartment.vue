@@ -9,46 +9,72 @@ export default {
 </script>
 
 <template>
-  <div class="col-12 col-xl-8 d-flex card_show gap-3 details p-3 card h-100 mb-3" v-if="apartment">
-    <h3 class="text-center pt-3"><strong>DETAILS:</strong></h3>
-    <div class="apartment_info flex-column justify-content-between align-items-start">
-      <h5 class="m-0 p-0 py-3"><strong>{{ apartment.title }}</strong></h5>
-      <div class="d-flex justify-content-between align-items-center gap-2 w-100">
-        <div class="d-flex align-items-center gap-3 flex-wrap h-100">
-          <span>
-            <span class="fw-semibold fs-3">{{ apartment.rooms }}</span>
-            <span> rooms</span>
-          </span>
-          <span>
-            <span class="fw-semibold fs-3">{{ apartment.beds }}</span>
-            <span> beds</span>
-          </span>
-          <span>
-            <span class="fw-semibold fs-3">{{ apartment.bathrooms }}</span>
-            <span> bathrooms </span>
-          </span>
-          <span>
-            <span class="fw-semibold fs-3">{{ apartment.square_meters }}</span>
-            <span> mq</span>
-          </span>
-        </div>
-        <div class="col-6 d-flex justify-content-end flex-wrap h-100">
-          <div v-if="apartment.visibility">
-            <strong>Apartment Available</strong>
+
+  <!-- Apartment details -->
+  <div class="col-12 d-flex detail_card flex-wrap  gap-3 details p-4 rounded-3 h-100 mb-3 " v-if="apartment">
+    <div class="col-12">
+      <h2 class=" fw-normal mb-5">Details:</h2>
+        <ul class=" list-unstyled d-flex gap-5">
+          <div class="col-6">
+            <li class="my-4 pb-4 row flex-sm-wrap">
+              <div class="col-6">Rooms: </div>
+              <div class="col-6">
+                <i class="fa-solid fa-door-open me-5"></i>
+                <span class=" ">{{ apartment.rooms }}
+                </span>
+              </div>             
+            </li>
+            <li class="my-4 row flex-sm-wrap">
+              <div class="col">Beds: </div>
+              <div class="col">
+                <i class="fa-solid fa-bed me-5"></i>
+                <span class=" ">{{ apartment.beds }}
+                </span>
+              </div>             
+            </li>
           </div>
-          <div v-else>
-            <strong>Apartment not available</strong>
+          <div class="col-6">
+            <li class="my-4 pb-4 row flex-sm-wrap">
+              <div class="col">Bathrooms: </div>
+              <div class="col">
+                <i class="fa-solid fa-toilet me-5"></i>
+                <span class=" ">{{ apartment.bathrooms }}
+                </span>
+              </div>             
+            </li>
+            <li class="my- row flex-sm-wrap">
+              <div class="col-6">Square meters: </div>
+              <div class="col-6">
+                <i class="fa-solid fa-up-right-and-down-left-from-center me-5 margin_negative"></i>
+                <span class="">{{ apartment.square_meters }}
+                </span>
+              </div>             
+            </li>
+            
           </div>
-        </div>
-      </div>
+        </ul>
+        <hr class="hr_margin pb-3">
+
+        <div class="col d-flex flex-wrap  justify-content-center">
+          <div class=" fs-5 fw-medium" v-if="apartment.visibility">
+              <h5>Apartment Available</h5>
+          
+            </div>
+            <div class=" fs-5 fw-medium" v-else>
+            Apartment not available
+            </div>
+          </div>
+
     </div>
+  </div>
+  <!-- Service -->
+  <div class="col-12 d-flex detail_card flex-column  gap-3 details p-4 rounded-3 h-100 mb-3" v-if="apartment">
+    
 
-    <hr class="hr_margin justify-content-center">
-
-    <h6><strong>Service:</strong></h6>
+    <h2 class=" fw-normal mb-5">Service:</h2>
     <div v-if="apartment.services.length >= 1">
-      <ul class="d-flex list-unstyled col-12 bottom flex-wrap">
-        <li class="badge bg-success me-1 mb-1 d-flex align-items-center justify-content-center p-2"
+      <ul class="d-flex list-unstyled  bottom flex-wrap flex-column list_size">
+        <li class=" col-6 badge bg-success me-1 mb-1 d-flex align-items-center p-2"
           v-for="service in apartment.services">
           {{ service.name }}
         </li>
@@ -60,10 +86,32 @@ export default {
       </li>
     </div>
   </div>
+  <div class="col-12 d-flex detail_card flex-wrap  gap-3 details p-4 rounded-3 h-100 mb-3 " v-if="apartment">
+    <h2 class=" fw-normal mb-2">Termini e condizioni</h2>
+    <p>
+      <strong class=" fw-bold">100% di rimborso dell'importo da pagare</strong>
+       e se cancelli almeno 30 giorni prima del check-in.
+    </p>
+    <p>
+      <strong>50% di rimborso dell'import da pagare</strong>
+      (meno il costo del servizio) se cancelli almeno 14 giorni prima del check-in.
+    </p>
+    <p>
+      <strong>Nessun rimborso</strong>
+      se cancelli 14 giorni prima del check-in.
+    </p>
+  </div>
+
+    
+  
 </template>
 
 
 
 <style lang="scss" scoped>
 @use '../styles/partials/apartmentView.scss';
+
+li{
+  font-size: 1.2rem;
+}
 </style>
