@@ -132,7 +132,7 @@ export default {
             </div>
         </nav>
         <div class="container">
-            <div class="row g-3 m-1">
+            <div class="row g-3 m-5">
                 <ApartmentCard v-for="apartment in state.researchedApartments" :title="apartment.title"
                     :beds="apartment.beds" :rooms="apartment.rooms" :full_address="apartment.full_address"
                     :image="apartment.image" :slug="apartment.slug" />
