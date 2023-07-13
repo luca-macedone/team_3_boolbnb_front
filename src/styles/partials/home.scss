@@ -220,9 +220,19 @@
 
 .star{
   position: absolute;
-  color: yellow;
-  width: 50px;
+  color: $bnb-accent;
   top: 20px;
-  right: 10px;
-  
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 30px;
+  aspect-ratio: 1;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.card_box:hover .star{
+display: none;
 }
