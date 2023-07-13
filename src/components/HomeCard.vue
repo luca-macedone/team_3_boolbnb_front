@@ -26,7 +26,7 @@ export default{
             <RouterLink
                     class="d-flex "
                     :to="{ name: 'apartment', params: { slug: apartment.slug } }">
-                <div class="card my_card m-auto p-0 w-100 border-0 rounded-1 gap-5 mb-3 g-3" >
+                <div class="card my_card m-auto p-0 w-100 border-0 rounded-1 gap-5 mb-3 g-3 card_box" >
                     <i class="fa-solid fa-star star"></i>
                     <div class="card-img-overlay d-flex align-items-end">
                         
