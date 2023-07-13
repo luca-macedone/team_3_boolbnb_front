@@ -65,10 +65,10 @@ export default{
           </router-link>
 				
 				<div class="d-flex justify-content-between py-3">
-					<RouterLink type="button" class="btn back_btn d-flex align-items-center gap-2 shadow"
+					<RouterLink type="button" class="btn back_btn d-flex align-items-center gap-2 shadow "
 						:to="{ name: 'search' }">
 						<i class="fa-solid fa-magnifying-glass"></i>
-						Search 
+						<span class="small_display ">Search</span> 
 					</RouterLink>
 				</div>
 			</div>

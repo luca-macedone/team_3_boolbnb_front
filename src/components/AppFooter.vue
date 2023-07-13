@@ -1,71 +1,85 @@
 
 <script>
 export default {
-  name: 'AppFooter'
+  name: 'AppFooter',
+  mounted() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    })
+    const hidden_elements = document.querySelectorAll('.hidden');
+    hidden_elements.forEach((el) => observer.observe(el));
+  },
 }
 </script>
 <template>
   <!-- footerone -->
 
-  <footer class="">
-    
-        <div class="container">
-          <div class="row my-5 pt-5">
+  <footer>
+    <section  class="hidden">
+     <div class="container  container_width hidden">
+       <div class="row my-5 pt-5 ">
 
-        <div class="col-6 col-lg-3">
-          <h2>BOOL BNB</h2>
+          <div class="col-6 col-lg-3">
+            <h2>BOOL BNB</h2>
 
-          <ul class="d-flex flex-column gap-3 mt-4">
-            <li><a href="#">Advanced search</a> </li>
-            <li><a href="#">Rent an apartment</a> </li>
-            <li><a href="#">Sponsorship</a> </li>
-            <li><a href="#">Home page</a> </li>
+            <ul class="d-flex flex-column gap-3 mt-4">
+              <li><a href="#">Advanced search</a> </li>
+              <li><a href="#">Rent an apartment</a> </li>
+              <li><a href="#">Sponsorship</a> </li>
+              <li><a href="#">Home page</a> </li>
 
 
-          </ul>
+            </ul>
+
+          </div>
+          <div class="col-6 col-lg-3">
+            <h2>CONTACTS</h2>
+
+            <ul class="d-flex flex-column gap-3 mt-4">
+              <li><a href="#"> Terms of Use</a></li>
+              <li><a href="#"> Privacy policy</a></li>
+              <li><a href="#"> BoolBnb maps</a></li>
+              <li><a href="#"> Who we are</a></li>
+              <li><a href="#">Contact Us</a> </li>
+
+            </ul>
+
+          </div>
+          <div class="col-6 col-lg-3 mt-5 mt-lg-0">
+            <h2>MADE BY</h2>
+
+            <ul class="d-flex flex-column gap-3 mt-4">
+              <li class="mac"><a href="https://www.linkedin.com/in/luca-macedone/">Luca Macedone</a></li>
+              <li class="rub"><a href="https://www.linkedin.com/in/luca-ruboni/">Luca Ruboni</a></li>
+              <li class="nes"><a href="https://www.linkedin.com/in/robertonesta/">Roberto Nesta</a></li>
+              <li class="del"><a href="https://www.linkedin.com/in/fabio-delli/">Fabio Delli</a></li>
+              <li class="odd"><a href="https://www.linkedin.com/in/daniel-oddo/">Daniel Oddo</a></li>
+
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-3 mt-5 mt-lg-0 d-flex justify-content-center hidden">
+            <img class="contributors" src="/contributors.png" alt="">
+          </div>
+
 
         </div>
-        <div class="col-6 col-lg-3">
-          <h2>CONTACTS</h2>
 
-          <ul class="d-flex flex-column gap-3 mt-4">
-            <li><a href="#"> Terms of Use</a></li>
-            <li><a href="#"> Privacy policy</a></li>
-            <li><a href="#"> BoolBnb maps</a></li>
-            <li><a href="#"> Who we are</a></li>
-            <li><a href="#">Contact Us</a> </li>
 
-          </ul>
-
-        </div>
-        <div class="col-6 col-lg-3 mt-5 mt-lg-0">
-          <h2>MADE BY</h2>
-
-          <ul class="d-flex flex-column gap-3 mt-4">
-            <li class="mac"><a href="https://www.linkedin.com/in/luca-macedone/">Luca Macedone</a></li>
-            <li class="rub"><a href="https://www.linkedin.com/in/luca-ruboni/">Luca Ruboni</a></li>
-            <li class="nes"><a href="https://www.linkedin.com/in/robertonesta/">Roberto Nesta</a></li>
-            <li class="del"><a href="https://www.linkedin.com/in/fabio-delli/">Fabio Delli</a></li>
-            <li class="odd"><a href="https://www.linkedin.com/in/daniel-oddo/">Daniel Oddo</a></li>
-
-          </ul>
-        </div>
-
-        <div class="col-6 col-lg-3 mt-5 mt-lg-0 d-flex justify-content-center">
-          <img class="contributors" src="/contributors.png" alt="">
-        </div>
 
 
       </div>
+   
+      <div class="col-12 down_col d-flex justify-content-between  hidden">
 
-
-
-
-          </div>
-       
-      <div class="col down_col d-flex justify-content-between">
-
-        <div class="container">
+        <div class="container container_width">
           <div class="row">
 
 
@@ -100,6 +114,7 @@ export default {
         </div>
 
       </div>
+    </section>
   </footer>
 </template>
 <style lang="scss" scoped>

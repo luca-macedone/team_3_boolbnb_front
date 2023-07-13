@@ -17,9 +17,29 @@ export default {
             base_API: 'http://127.0.0.1:8000/',
             store: 'storage/',
             showFullscreen: false,
+            copyStatus: '',
         }
     },
     methods: {
+         copyLink() {
+            const currentLink = window.location.href;
+            navigator.clipboard.writeText(currentLink)
+              .then(() => {
+                this.copyStatus = 'success'; // Set success status
+                this.hideAlertAfterDelay(3000); // Hide alert after 2 seconds
+              })
+              .catch((error) => {
+                this.copyStatus = 'error'; // Set error status
+                console.error('Failed to copy link:', error);
+                this.hideAlertAfterDelay(2000); // Hide alert after 2 seconds
+              });
+          },
+          hideAlertAfterDelay(delay) {
+            setTimeout(() => {
+              this.copyStatus = ''; // Reset copy status to hide the alert
+            }, delay);
+          },
+       
         initializeMap() {
             if (this.apartment) {
                 let size = 50
@@ -113,6 +133,19 @@ export default {
         }
     },
     mounted() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            console.log(entry)
+            if (entry.isIntersecting) {
+              entry.target.classList.add('show');
+            } else {
+              entry.target.classList.remove('show');
+            }
+          });
+        })
+        const hidden_elements = document.querySelectorAll('.hidden');
+        hidden_elements.forEach((el) => observer.observe(el));
+  
         const url = this.base_API + 'api/apartments/' + this.$route.params.slug;
         axios.get(url)
             .then(response => {
@@ -149,40 +182,64 @@ export default {
                         <i class="fa-solid fa-arrow-left-long"></i>
                         Back
                     </router-link>
+
+                    <div class="d-flex flex-column ">
+                      
+                      <button type="button" class="btn back_btn d-flex align-items-center gap-2 shadow" @click="copyLink">
+                          <i class="fa-solid fa-share-nodes"></i>        
+                          Share
+                      </button>
+                          
+
+                  </div>
                 </div>
-                <div v-if="apartment">
-                    <h1>{{ apartment.title }}</h1>
-                    <p>
-                        {{ apartment.full_address }}
-                    </p>
+
+                <div class="col-12 text-center">
+                   
+                        <h4 v-if="copyStatus" class="my_alert py-3 rounded-1 shadow"  :class="[copyStatus === 'success' ? 'success-message' : 'error-message']">
+                            {{ copyStatus === 'success' ? 'Link copied to clipboard!' : 'Failed to copy link.' }}
+                        </h4>
+                    
                 </div>
+                <div class="col-12 d-flex justify-content-between">
+                    <div v-if="apartment">
+                        <h1 class=" fw-semibold text_bnb_dark">{{ apartment.title }}</h1>
+                        <p class="text_bnb_dark">
+                            {{ apartment.full_address }}
+                        </p>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
         <div class="row">
-            <div class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
-                <div v-if="apartment" class="w-100">
-                    <div>
-                        <img class="img-fluid card border-0 card_shadow"
+            <div v-if="apartment" class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
+                
+                        <img class="img-fluid card border-0 card_shadow w-100"
                             :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="" @click="toggleFullscreen()">
-                    </div>
+                    
                     <div class="fullscreen-overlay" v-if="showFullscreen" @click="toggleFullscreen">
                         <div class="fullscreen-image-container">
                             <img class="fullscreen-image" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="">
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
-        <div class="row h-100">
+        <section  class=" hidden row h-100">
             <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
             <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
-        </div>
-        <MapSingleApartment :apartment="apartment"></MapSingleApartment>
+        </section>
+       <section class="hidden maps">
+            <MapSingleApartment :apartment="apartment"></MapSingleApartment>
+       </section>
     </div>
 </template>
 
-<style lang="scss">
-@use '../styles/partials/apartmentView.scss';
+<style lang="scss" scoped>
+@use '../styles/app.scss';
+
 
 .marker-border {
     background-color: #303030;
@@ -199,6 +256,42 @@ export default {
     left: 0.5px;
     top: 0.5px;
     height: 49px;
-    width: 49px;
+    width: 
+    
+    49px;
 }
+
+section{
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 50vh;
+  
+
+}
+
+.hidden{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 0.6s;
+}
+
+.hidden  .maps{
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(+100%);
+  transition: all 0.6s;
+  width: 100%;
+}
+
+.show{
+
+opacity: 1;
+filter: blur(0);
+transform: translateX(0);
+}
+  
+
+  
 </style>
