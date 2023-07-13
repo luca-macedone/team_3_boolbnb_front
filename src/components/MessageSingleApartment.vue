@@ -81,16 +81,16 @@ export default {
 }
 </script>
 <template>
-  <div class="col-12 col-xl-4 pe-0 ps-xl-1 ps-0 col_message">
-    <div class="card mb-3 card_message">
-      <div class="p-3">
+  <div class="col-12 detail_card pe-0  ps-0 col_message rounded-2 message_card">
+    <div class=" mb-3 card_message">
+      <div class="p-3 rounded-2">
         <div v-if="success" class="alert alert-success text-start" role="alert">
           Messaggio inviato con successo!
         </div>
         <form>
-          <h3 class="text-center"><strong>Message to the owner</strong></h3>
+          <h2 class="text_color fw-normal">Write a Message</h2>
           <div class="my-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="text_color form-label">Email</label>
             <input type="email" class="form-control " id="floatingInput" placeholder="Insert your email here"
               v-model="email">
             <div class="text-danger" v-if="v$.email.required.$invalid && v$.email.$error">
@@ -102,9 +102,9 @@ export default {
           </div>
 
           <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea v-model="message" class="w-100 border-0" name="message" id="message" rows="3"
-              placeholder="insert your message here"></textarea>
+            <label for="message" class="form-label text_color">Message</label>
+            <textarea v-model="message" class="w-100 border-0 rounded-2 p-2" name="message" id="message" rows="3"
+              placeholder="Insert your message here"></textarea>
             <div class="text-danger" v-if="v$.message.required.$invalid && v$.message.$error">
               This field is required
             </div>
@@ -118,7 +118,7 @@ export default {
 
           <div class="d-flex justify-content-end">
             <!-- <button class="btn btn-secondary" type="button" id="my-btn-close" data-bs-dismiss="offcanvas">Cancel</button> -->
-            <button type="submit" class="btn btn-primary" id="my_btn_send_message" :disabled="loading"
+            <button type="submit" class="btn back_btn d-flex align-items-center gap-2 shadow" id="my_btn_send_message" :disabled="loading"
               @click.prevent="submitForm()">{{
                 loading ?
                 'Sending...' : 'Send' }}</button>
@@ -132,4 +132,5 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/apartmentView.scss';
+
 </style>

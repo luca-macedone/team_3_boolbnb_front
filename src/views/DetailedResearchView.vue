@@ -175,10 +175,10 @@ export default {
 <style></style>
 
 <template>
-    <div class="container text-white mt-5 p-0">
+    <div class="container mt-5 p-0">
         <div class="row mt-5 align-items-center">
             <div class="col-12 p-0 title_apartment">
-                <div class="pb-3 d-flex justify-content-between align-items-center">
+                <div class="pb-3 d-flex justify-content-between align-items-center mb-2">
                     <router-link to="/search" class="btn back_btn d-flex align-items-center gap-2 shadow">
                         <i class="fa-solid fa-arrow-left-long"></i>
                         Back
@@ -197,13 +197,13 @@ export default {
 
                 <div class="col-12 text-center">
 
-                    <h4 v-if="copyStatus" class="my_alert py-3 rounded-1 shadow"
+                    <h4 v-if="copyStatus" class="my_alert py-3 rounded-1 shadow text-light"
                         :class="[copyStatus === 'success' ? 'success-message' : 'error-message']">
                         {{ copyStatus === 'success' ? 'Link copied to clipboard!' : 'Failed to copy link.' }}
                     </h4>
 
                 </div>
-                <div class="col-12 d-flex justify-content-between">
+                <div class="col-12 d-flex justify-content-between mb-3">
                     <div v-if="apartment">
                         <h1 class=" fw-semibold text_bnb_dark">{{ apartment.title }}</h1>
                         <p class="text_bnb_dark">
@@ -218,7 +218,7 @@ export default {
         <div class="row">
             <div v-if="apartment" class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
 
-                <img class="img-fluid card border-0 card_shadow w-100"
+                <img class="img-fluid card border-0 card_shadow img_size"
                     :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="" @click="toggleFullscreen()">
 
                 <div class="fullscreen-overlay" v-if="showFullscreen" @click="toggleFullscreen">
@@ -229,9 +229,14 @@ export default {
 
             </div>
         </div>
-        <section class=" hidden row h-100">
-            <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
-            <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
+        <section class=" hidden row h-100" >
+            <div class="col-12 col-md-8">
+                <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
+            </div>
+            <div class="col-12 col-md-4 align-self-start message_card">
+                <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
+            </div>
+           
         </section>
         <section class="hidden maps">
             <MapSingleApartment :apartment="apartment"></MapSingleApartment>
