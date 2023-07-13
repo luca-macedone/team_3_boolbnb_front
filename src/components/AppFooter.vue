@@ -5,7 +5,7 @@ export default {
   mounted() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry)
+        // console.log(entry)
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
         } else {
@@ -22,9 +22,9 @@ export default {
   <!-- footerone -->
 
   <footer>
-    <section  class="hidden">
-     <div class="container  container_width hidden">
-       <div class="row my-5 pt-5 ">
+    <section class="hidden">
+      <div class="container  container_width hidden">
+        <div class="row my-5 pt-5 ">
 
           <div class="col-6 col-lg-3">
             <h2>BOOL BNB</h2>
@@ -76,7 +76,7 @@ export default {
 
 
       </div>
-   
+
       <div class="col-12 down_col d-flex justify-content-between  hidden">
 
         <div class="container container_width">
@@ -91,7 +91,8 @@ export default {
 
               <div class="col d-flex justify-content-center py-3 w-100">
                 <a type="button"
-                  class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center" href="http://127.0.0.1:8000">
+                  class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center"
+                  href="http://127.0.0.1:8000">
                   Sign up Now!
                 </a>
               </div>
@@ -104,7 +105,7 @@ export default {
                 <span class="align-self-center">Supporto e Risorse</span>
 
 
-               
+
               </div>
 
             </nav>
@@ -117,8 +118,6 @@ export default {
     </section>
   </footer>
 </template>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
 
 
