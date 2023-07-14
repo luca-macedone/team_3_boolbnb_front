@@ -130,7 +130,7 @@
 }
 
 .list_size{
-  max-height: 600px;
+  max-height: 700px;
 }
 .text_color{
   color: $bnb-light;
@@ -140,5 +140,10 @@
   position: sticky;
   top: 1rem;
   right: 0;
- margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.my_badge{
+  background-color: $bnb-semi-transparent;
+  
 }

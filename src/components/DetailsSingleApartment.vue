@@ -73,10 +73,10 @@ export default {
 
     <h2 class=" fw-normal mb-5">Service:</h2>
     <div v-if="apartment.services.length >= 1">
-      <ul class="d-flex list-unstyled  bottom flex-wrap flex-column list_size">
-        <li class=" col-6 badge bg-success me-1 mb-1 d-flex align-items-center p-2"
+      <ul class="d-flex bottom flex-wrap flex-column list_size">
+        <li class=" col d-flex flex-wrap p-2"
           v-for="service in apartment.services">
-          {{ service.name }}
+          <span class=" d-inline-block my_badge py-1 px-2 fs-6 rounded-2">{{ service.name }}</span>
         </li>
       </ul>
     </div>
