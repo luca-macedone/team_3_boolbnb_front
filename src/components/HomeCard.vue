@@ -11,7 +11,21 @@ export default{
         return{
             state
         }
-    }
+    },
+    mounted() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        //console.log(entry)
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    })
+    const hidden_elements = document.querySelectorAll('.hidden');
+    hidden_elements.forEach((el) => observer.observe(el));
+  },
 }
 </script>
 
@@ -22,11 +36,11 @@ export default{
 
         <!-- smaller cards -->
 
-        <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-4 ">
             <RouterLink
                     class="d-flex "
                     :to="{ name: 'apartment', params: { slug: apartment.slug } }">
-                <div class="card my_card m-auto p-0 w-100 border-0 rounded-1 gap-5 mb-3 g-3 card_box" >
+                <div id="section_card" class="card hidden my_card m-auto p-0 w-100 border-0 rounded-1 gap-5 mb-3 g-3 card_box" >
                     <i class="fa-solid fa-star star"></i>
                     <div class="card-img-overlay d-flex align-items-end">
                         
