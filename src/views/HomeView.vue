@@ -22,7 +22,7 @@ export default {
   mounted() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        console.log(entry)
+        //console.log(entry)
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
         } else {
@@ -45,8 +45,8 @@ export default {
 
   <div class="container ">
     <div class="row justify-content-center " v-if="state.apartments && state.apartments.length > 0">
-      <section id="section_home" class="sec_2  flex-column">
-        <div class="d-flex justify-content-center  my-2 flex-column hidden">
+      <section id="section_home" class="sec_2 hidden flex-column">
+        <div class="d-flex justify-content-center  my-2 flex-column ">
           <div class="d-flex justify-content-center flex-wrap ">
             <img src="/logo_horizontal.svg" class=" img-fluid" alt="bool bnb logo">
             <img src="/most_wanted_logo.svg" class="most_wanted img-fluid" alt="most wanted apartments">
@@ -62,7 +62,7 @@ export default {
 
         <!-- card display ---------------------->
 
-        <div class="row g-3 mt-3 mb-5 hidden" v-if="state.apartments">
+        <div class="row g-3 mt-3 mb-5 " v-if="state.apartments">
 
           <HomeCard v-for="(apartment, index) in state.apartments.slice(0, 6)" :apartment="apartment" :index="index">
           </HomeCard>
