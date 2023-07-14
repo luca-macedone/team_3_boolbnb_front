@@ -14,7 +14,7 @@ export default {
   <div class="col-12 d-flex detail_card flex-wrap  gap-3 details p-4 rounded-3 h-100 mb-3 " v-if="apartment">
     <div class="col-12">
       <h2 class=" fw-normal mb-5">Details:</h2>
-        <ul class=" list-unstyled d-flex gap-5">
+        <ul class=" list-unstyled d-flex g-5">
           <div class="col-6">
             <li class="my-4 pb-4 row flex-sm-wrap">
               <div class="col-6">Rooms: </div>
@@ -72,14 +72,14 @@ export default {
     
 
     <h2 class=" fw-normal mb-5">Service:</h2>
-    <div v-if="apartment.services.length >= 1">
-      <ul class="d-flex bottom flex-wrap flex-column list_size">
-        <li class=" col d-flex flex-wrap p-2"
+    
+      <ul class=" col d-flex gap-5 flex-wrap list_size" v-if="apartment.services.length >= 1">
+        <li class=" col d-flex  list_item_size"
           v-for="service in apartment.services">
-          <span class=" d-inline-block my_badge py-1 px-2 fs-6 rounded-2">{{ service.name }}</span>
+          <span class=" d-inline-block my_badge py-1 px-2 rounded-2 list_item_size p-2 text_bnb_light align_self-center">{{ service.name }}</span>
         </li>
       </ul>
-    </div>
+    
     <div v-else>
       <li>
         <strong>No services available</strong>
@@ -112,6 +112,6 @@ export default {
 @use '../styles/partials/apartmentView.scss';
 
 li{
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 </style>

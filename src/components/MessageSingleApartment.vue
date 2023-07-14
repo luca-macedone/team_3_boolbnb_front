@@ -98,7 +98,7 @@ export default {
           <h2 class="text_color fw-normal">Write a Message</h2>
           <div class="my-3">
             <label for="email" class="text_color form-label">Email</label>
-            <input type="email" class="form-control " id="floatingInput" placeholder="Insert your email here"
+            <input type="email" class="form-control shadow " id="floatingInput" placeholder="Insert your email here"
               v-model="email">
             <div class="text-danger" v-if="v$.email.required.$invalid && v$.email.$error">
               This field is required
@@ -110,7 +110,7 @@ export default {
 
           <div class="my-3">
             <label for="name" class="text_color form-label">name</label>
-            <input type="name" class="form-control " id="floatingInput" placeholder="Insert your name here"
+            <input type="name" class="form-control shadow" id="floatingInput" placeholder="Insert your name here"
               v-model="name">
             <div class="text-danger" v-if=" v$.name.$error">
               invalid name, it must be less than 100 characters ex.John
@@ -119,7 +119,7 @@ export default {
 
           <div class="my-3">
             <label for="lastname" class="text_color form-label">lastname</label>
-            <input type="lastname" class="form-control " id="floatingInput" placeholder="Insert your lastname here"
+            <input type="lastname" class="form-control shadow" id="floatingInput" placeholder="Insert your lastname here"
               v-model="lastname">
             <div class="text-danger" v-if=" v$.lastname.$error">
               invalid lastname, it must be less than 100 characters ex.Doe
@@ -128,7 +128,7 @@ export default {
 
           <div class="mb-3">
             <label for="message" class="form-label text_color">Message</label>
-            <textarea v-model="message" class="w-100 border-0 rounded-2 p-2" name="message" id="message" rows="3"
+            <textarea v-model="message" class="w-100 border-0 rounded-2 p-2 shadow" name="message" id="message" rows="3"
               placeholder="Insert your message here"></textarea>
             <div class="text-danger" v-if="v$.message.required.$invalid && v$.message.$error">
               This field is required
