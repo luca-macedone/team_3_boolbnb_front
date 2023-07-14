@@ -20,24 +20,18 @@ export default {
     }
   },
   mounted() {
-    let sections = document.querySelectorAll('section');
-    window.onscroll = () => {
-      sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 600;
-        let height = sec.offsetHeight;
-
-        if (top >= offset && top < offset + height) {
-          sec.classList.add('show_animate');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
         }
-
-        else {
-          sec.classList.remove('show_animate');
-        }
-
-
-      })
-    }
+      });
+    })
+    const hidden_elements = document.querySelectorAll('.hidden');
+    hidden_elements.forEach((el) => observer.observe(el));
   },
 }
 </script>
@@ -50,10 +44,10 @@ export default {
 
 
   <div class="container ">
-    <div class="row justify-content-center" v-if="state.apartments && state.apartments.length > 0">
+    <div class="row justify-content-center " v-if="state.apartments && state.apartments.length > 0">
       <section id="section_home" class="sec_2  flex-column">
-        <div class="d-flex justify-content-center animate  my-2 flex-column animate">
-          <div class="d-flex justify-content-center flex-wrap">
+        <div class="d-flex justify-content-center  my-2 flex-column hidden">
+          <div class="d-flex justify-content-center flex-wrap ">
             <img src="/logo_horizontal.svg" class=" img-fluid" alt="bool bnb logo">
             <img src="/most_wanted_logo.svg" class="most_wanted img-fluid" alt="most wanted apartments">
           </div>
@@ -68,12 +62,9 @@ export default {
 
         <!-- card display ---------------------->
 
-        <div class="row g-3 mt-3 mb-5 animate" v-if="state.apartments">
+        <div class="row g-3 mt-3 mb-5 hidden" v-if="state.apartments">
 
-          <HomeCardBig v-for="(apartment, index) in state.apartments.slice(0, 1)" :apartment="apartment" :index="index">
-          </HomeCardBig>
-
-          <HomeCard v-for="(apartment, index) in state.apartments.slice(1, 7)" :apartment="apartment" :index="index">
+          <HomeCard v-for="(apartment, index) in state.apartments.slice(0, 6)" :apartment="apartment" :index="index">
           </HomeCard>
 
         </div>

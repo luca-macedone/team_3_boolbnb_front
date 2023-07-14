@@ -45,6 +45,22 @@ export default{
     // Cambia il placeholder ogni 2 secondi
     setInterval(rotatePlaceholder, 2000);
 
+
+    //animazione
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        console.log(entry)
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    })
+    const hidden_elements = document.querySelectorAll('.hidden');
+    hidden_elements.forEach((el) => observer.observe(el));
+
 	}
 }
 
@@ -57,14 +73,14 @@ export default{
 		</div>
 
 		<!-- search ------------------>
-		<div class="d-flex justify-content-center">
+		<div id="section_search" class="d-flex justify-content-center hidden">
 			<div class="d-flex align-items-center justify-content-between rounded-3 shadow gap-3 search_box_home ">
 				<img class="" height="30" src="/pin_only.svg" alt="">
 				<router-link :to="{ name: 'search'}" class="w-100"> <input class="input rounded-3 shadow w-100 search_input" type="search" name="search" id="search"
 					placeholder="Where we go?" >
           </router-link>
 				
-				<div class="d-flex justify-content-between py-3">
+				<div class="d-flex justify-content-between py-3 ">
 					<RouterLink type="button" class="btn back_btn d-flex align-items-center gap-2 shadow "
 						:to="{ name: 'search' }">
 						<i class="fa-solid fa-magnifying-glass"></i>
