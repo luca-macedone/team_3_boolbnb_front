@@ -26,7 +26,10 @@ export default {
   validations() {
     return {
       email: { required, email, maxLength: maxLength(50) },
-      message: { required, minLength: minLength(5), maxLength: maxLength(400) }
+      message: { required, minLength: minLength(5), maxLength: maxLength(400) },
+      name: { minLength: minLength(1), maxLength: maxLength(100)},
+      lastname: { minLength: minLength(1), maxLength: maxLength(100)}
+
     };
   },
   methods: {
@@ -49,6 +52,8 @@ export default {
       const data = {
         email: this.email,
         message: this.message,
+        name: this.name,
+        lastname: this.lastname,
         apartment_id: this.apartment.id,
       };
       //console.log('Send form');
@@ -61,6 +66,8 @@ export default {
           } else {
             this.email = '';
             this.message = '';
+            this.name = '';
+            this.lastname = '';
             this.success = false;
           }
           this.success = response.data.success;
@@ -82,7 +89,7 @@ export default {
 </script>
 <template>
   <div class="col-12 detail_card pe-0  ps-0 col_message rounded-2 message_card">
-    <div class=" mb-3 card_message">
+    <div class="card_message rounded-2">
       <div class="p-3 rounded-2">
         <div v-if="success" class="alert alert-success text-start" role="alert">
           Messaggio inviato con successo!
@@ -91,19 +98,37 @@ export default {
           <h2 class="text_color fw-normal">Write a Message</h2>
           <div class="my-3">
             <label for="email" class="text_color form-label">Email</label>
-            <input type="email" class="form-control " id="floatingInput" placeholder="Insert your email here"
+            <input type="email" class="form-control shadow " id="floatingInput" placeholder="Insert your email here"
               v-model="email">
             <div class="text-danger" v-if="v$.email.required.$invalid && v$.email.$error">
               This field is required
             </div>
             <div class="text-danger" v-if="v$.email.email.$invalid && v$.email.$error">
-              invalid email, email.boolbnb.com
+              invalid email, ex.email.boolbnb.com
+            </div>
+          </div>
+
+          <div class="my-3">
+            <label for="name" class="text_color form-label">name</label>
+            <input type="name" class="form-control shadow" id="floatingInput" placeholder="Insert your name here"
+              v-model="name">
+            <div class="text-danger" v-if=" v$.name.$error">
+              invalid name, it must be less than 100 characters ex.John
+            </div>
+          </div>
+
+          <div class="my-3">
+            <label for="lastname" class="text_color form-label">lastname</label>
+            <input type="lastname" class="form-control shadow" id="floatingInput" placeholder="Insert your lastname here"
+              v-model="lastname">
+            <div class="text-danger" v-if=" v$.lastname.$error">
+              invalid lastname, it must be less than 100 characters ex.Doe
             </div>
           </div>
 
           <div class="mb-3">
             <label for="message" class="form-label text_color">Message</label>
-            <textarea v-model="message" class="w-100 border-0 rounded-2 p-2" name="message" id="message" rows="3"
+            <textarea v-model="message" class="w-100 border-0 rounded-2 p-2 shadow" name="message" id="message" rows="3"
               placeholder="Insert your message here"></textarea>
             <div class="text-danger" v-if="v$.message.required.$invalid && v$.message.$error">
               This field is required
