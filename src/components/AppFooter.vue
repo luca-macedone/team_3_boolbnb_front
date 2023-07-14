@@ -1,122 +1,117 @@
 
 <script>
 export default {
-  name: 'AppFooter',
-  mounted() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        // console.log(entry)
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    })
-    const hidden_elements = document.querySelectorAll('.hidden');
-    hidden_elements.forEach((el) => observer.observe(el));
-  },
+	name: 'AppFooter',
+	mounted() {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				// console.log(entry)
+				if (entry.isIntersecting) {
+					entry.target.classList.add('show');
+				} else {
+					entry.target.classList.remove('show');
+				}
+			});
+		})
+		const hidden_elements = document.querySelectorAll('.hidden');
+		hidden_elements.forEach((el) => observer.observe(el));
+	},
 }
 </script>
 <template>
-  <!-- footerone -->
+	<!-- footerone -->
 
-  <footer>
-    <section class="hidden">
-      <div class="container  container_width hidden">
-        <div class="row my-5 pt-5 ">
+	<footer>
+		<section class="">
+			<div class="container hidden container_width">
+				<div class="row mt-5 pt-5">
 
-          <div class="col-6 col-lg-3">
-            <h2>BOOL BNB</h2>
+					<div class="col-6 col-lg-3">
+						<h2>BOOL BNB</h2>
 
-            <ul class="d-flex flex-column gap-3 mt-4">
-              <li><a href="#">Advanced search</a> </li>
-              <li><a href="#">Rent an apartment</a> </li>
-              <li><a href="#">Sponsorship</a> </li>
-              <li><a href="#">Home page</a> </li>
-
-
-            </ul>
-
-          </div>
-          <div class="col-6 col-lg-3">
-            <h2>CONTACTS</h2>
-
-            <ul class="d-flex flex-column gap-3 mt-4">
-              <li><a href="#"> Terms of Use</a></li>
-              <li><a href="#"> Privacy policy</a></li>
-              <li><a href="#"> BoolBnb maps</a></li>
-              <li><a href="#"> Who we are</a></li>
-              <li><a href="#">Contact Us</a> </li>
-
-            </ul>
-
-          </div>
-          <div class="col-6 col-lg-3 mt-5 mt-lg-0">
-            <h2>MADE BY</h2>
-
-            <ul class="d-flex flex-column gap-3 mt-4">
-              <li class="mac"><a href="https://www.linkedin.com/in/luca-macedone/">Luca Macedone</a></li>
-              <li class="rub"><a href="https://www.linkedin.com/in/luca-ruboni/">Luca Ruboni</a></li>
-              <li class="nes"><a href="https://www.linkedin.com/in/robertonesta/">Roberto Nesta</a></li>
-              <li class="del"><a href="https://www.linkedin.com/in/fabio-delli/">Fabio Delli</a></li>
-              <li class="odd"><a href="https://www.linkedin.com/in/daniel-oddo/">Daniel Oddo</a></li>
-
-            </ul>
-          </div>
-
-          <div class="col-6 col-lg-3 mt-5 mt-lg-0 d-flex justify-content-center hidden">
-            <img class="contributors" src="/contributors.png" alt="">
-          </div>
+						<ul class="d-flex flex-column gap-3 mt-4">
+							<li><a href="#">Advanced search</a> </li>
+							<li><a href="#">Rent an apartment</a> </li>
+							<li><a href="#">Sponsorship</a> </li>
+							<li><a href="#">Home page</a> </li>
 
 
-        </div>
+						</ul>
+
+					</div>
+					<div class="col-6 col-lg-3">
+						<h2>CONTACTS</h2>
+
+						<ul class="d-flex flex-column gap-3 mt-4">
+							<li><a href="#"> Terms of Use</a></li>
+							<li><a href="#"> Privacy policy</a></li>
+							<li><a href="#"> BoolBnb maps</a></li>
+							<li><a href="#"> Who we are</a></li>
+							<li><a href="#">Contact Us</a> </li>
+
+						</ul>
+
+					</div>
+					<div class="col-6 col-lg-3 mt-5 mt-lg-0">
+						<h2>MADE BY</h2>
+
+						<ul class="d-flex flex-column gap-3 mt-4">
+							<li class="mac"><a href="https://www.linkedin.com/in/luca-macedone/">Luca Macedone</a></li>
+							<li class="rub"><a href="https://www.linkedin.com/in/luca-ruboni/">Luca Ruboni</a></li>
+							<li class="nes"><a href="https://www.linkedin.com/in/robertonesta/">Roberto Nesta</a></li>
+							<li class="del"><a href="https://www.linkedin.com/in/fabio-delli/">Fabio Delli</a></li>
+							<li class="odd"><a href="https://www.linkedin.com/in/daniel-oddo/">Daniel Oddo</a></li>
+
+						</ul>
+					</div>
+
+					<div class="col-6 col-lg-3 mt-5 mt-lg-0 d-flex justify-content-center hidden">
+						<img class="contributors" src="/contributors.png" alt="">
+					</div>
 
 
+				</div>
+
+			</div>
+
+			<div class="col-12 down_col d-flex justify-content-between">
+
+				<div class="container hidden container_width">
+					<div class="row">
+
+						<nav class="navbar my-3 d-flex align-items-center">
+
+							<a class="navbar-brand d-flex text-light" href="#">
+								&copy; 2023 Boolbnb, Inc.
+							</a>
+
+							<div class="col d-flex justify-content-center py-3 w-100">
+								<a type="button"
+									class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center"
+									href="http://127.0.0.1:8000">
+									Sign up Now!
+								</a>
+							</div>
+
+							<div class="d-flex align-items-center gap-4">
 
 
-      </div>
-
-      <div class="col-12 down_col d-flex justify-content-between  hidden">
-
-        <div class="container container_width">
-          <div class="row">
-
-
-            <nav class="navbar my-3 d-flex align-items-center">
-
-              <a class="navbar-brand d-flex text-light" href="#">
-                &copy; 2023 Boolbnb, Inc.
-              </a>
-
-              <div class="col d-flex justify-content-center py-3 w-100">
-                <a type="button"
-                  class="btn back_btn_card d-flex align-items-center gap-2 shadow w-75 justify-content-center"
-                  href="http://127.0.0.1:8000">
-                  Sign up Now!
-                </a>
-              </div>
-
-              <div class="d-flex align-items-center gap-4">
-
-
-                <span class="align-self-center"><i class="fa-solid fa-globe"></i> Italiano (IT)</span>
-                <span class="align-self-center">€ EUR</span>
-                <span class="align-self-center">Supporto e Risorse</span>
+								<span class="align-self-center"><i class="fa-solid fa-globe"></i> Italiano (IT)</span>
+								<span class="align-self-center">€ EUR</span>
+								<span class="align-self-center">Supporto e Risorse</span>
 
 
 
-              </div>
+							</div>
 
-            </nav>
+						</nav>
 
+					</div>
+				</div>
 
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </footer>
+			</div>
+		</section>
+	</footer>
 </template>
 <style lang="scss" scoped></style>
 
