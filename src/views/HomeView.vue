@@ -62,7 +62,7 @@ export default {
 
         <!-- card display ---------------------->
 
-        <div class="row g-3 mt-3 mb-5 " v-if="state.apartments">
+        <div class="row g-3 mt-3 mb-5 w-100 " v-if="state.apartments">
 
           <HomeCard v-for="(apartment, index) in state.apartments.slice(0, 6)" :apartment="apartment" :index="index">
           </HomeCard>
