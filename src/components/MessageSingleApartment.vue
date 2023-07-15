@@ -27,8 +27,8 @@ export default {
     return {
       email: { required, email, maxLength: maxLength(50) },
       message: { required, minLength: minLength(5), maxLength: maxLength(400) },
-      name: { minLength: minLength(1), maxLength: maxLength(100)},
-      lastname: { minLength: minLength(1), maxLength: maxLength(100)}
+      name: { minLength: minLength(1), maxLength: maxLength(100) },
+      lastname: { minLength: minLength(1), maxLength: maxLength(100) }
 
     };
   },
@@ -88,68 +88,67 @@ export default {
 }
 </script>
 <template>
-  <div class="col-12 detail_card pe-0  ps-0 col_message rounded-2 message_card">
-    <div class="card_message rounded-2">
-      <div class="p-3 rounded-2">
-        <div v-if="success" class="alert alert-success text-start" role="alert">
-          Messaggio inviato con successo!
-        </div>
-        <form>
-          <h2 class="text_color fw-normal">Write a Message</h2>
-          <div class="my-3">
-            <label for="email" class="text_color form-label">Email</label>
-            <input type="email" class="form-control shadow " id="floatingInput" placeholder="Insert your email here"
-              v-model="email">
-            <div class="text-danger" v-if="v$.email.required.$invalid && v$.email.$error">
-              This field is required
-            </div>
-            <div class="text-danger" v-if="v$.email.email.$invalid && v$.email.$error">
-              invalid email, ex.email.boolbnb.com
-            </div>
-          </div>
+  <div class="col-12 detail_card mb-0 col_message message_card h-100">
+    <div class="card_message shadow p-3 h-100">
 
-          <div class="my-3">
-            <label for="name" class="text_color form-label">name</label>
-            <input type="name" class="form-control shadow" id="floatingInput" placeholder="Insert your name here"
-              v-model="name">
-            <div class="text-danger" v-if=" v$.name.$error">
-              invalid name, it must be less than 100 characters ex.John
-            </div>
-          </div>
-
-          <div class="my-3">
-            <label for="lastname" class="text_color form-label">lastname</label>
-            <input type="lastname" class="form-control shadow" id="floatingInput" placeholder="Insert your lastname here"
-              v-model="lastname">
-            <div class="text-danger" v-if=" v$.lastname.$error">
-              invalid lastname, it must be less than 100 characters ex.Doe
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label for="message" class="form-label text_color">Message</label>
-            <textarea v-model="message" class="w-100 border-0 rounded-2 p-2 shadow" name="message" id="message" rows="3"
-              placeholder="Insert your message here"></textarea>
-            <div class="text-danger" v-if="v$.message.required.$invalid && v$.message.$error">
-              This field is required
-            </div>
-            <div class="text-danger" v-if="v$.message.minLength.$invalid && v$.message.$error">
-              This field must have a minimum of 5 characters
-            </div>
-            <div class="text-danger" v-if="v$.message.maxLength.$invalid && v$.message.$error">
-              This field must have a maximum of 400 characters
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-end">
-            <!-- <button class="btn btn-secondary" type="button" id="my-btn-close" data-bs-dismiss="offcanvas">Cancel</button> -->
-            <button type="submit" class="btn back_btn d-flex align-items-center gap-2 shadow" id="my_btn_send_message" :disabled="loading"
-              @click.prevent="submitForm()">{{
-                loading ?
-                'Sending...' : 'Send' }}</button>
-          </div>
-        </form>
+      <div v-if="success" class="alert alert-success text-start" role="alert">
+        Messaggio inviato con successo!
       </div>
+      <form>
+        <h2 class="text_color fw-normal">Write a Message</h2>
+        <div class="my-3">
+          <label for="email" class="text_color form-label">Email</label>
+          <input type="email" class="form-control " id="floatingInput" placeholder="Insert your email here"
+            v-model="email">
+          <div class="text-danger" v-if="v$.email.required.$invalid && v$.email.$error">
+            This field is required
+          </div>
+          <div class="text-danger" v-if="v$.email.email.$invalid && v$.email.$error">
+            invalid email, ex.email.boolbnb.com
+          </div>
+        </div>
+
+        <div class="my-3">
+          <label for="name" class="text_color form-label">name</label>
+          <input type="name" class="form-control" id="floatingInput" placeholder="Insert your name here" v-model="name">
+          <div class="text-danger" v-if="v$.name.$error">
+            invalid name, it must be less than 100 characters ex.John
+          </div>
+        </div>
+
+        <div class="my-3">
+          <label for="lastname" class="text_color form-label">lastname</label>
+          <input type="lastname" class="form-control" id="floatingInput" placeholder="Insert your lastname here"
+            v-model="lastname">
+          <div class="text-danger" v-if="v$.lastname.$error">
+            invalid lastname, it must be less than 100 characters ex.Doe
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="message" class="form-label text_color">Message</label>
+          <textarea v-model="message" class="w-100 border-0 rounded-2 p-2" name="message" id="message" rows="3"
+            placeholder="Insert your message here"></textarea>
+          <div class="text-danger" v-if="v$.message.required.$invalid && v$.message.$error">
+            This field is required
+          </div>
+          <div class="text-danger" v-if="v$.message.minLength.$invalid && v$.message.$error">
+            This field must have a minimum of 5 characters
+          </div>
+          <div class="text-danger" v-if="v$.message.maxLength.$invalid && v$.message.$error">
+            This field must have a maximum of 400 characters
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <!-- <button class="btn btn-secondary" type="button" id="my-btn-close" data-bs-dismiss="offcanvas">Cancel</button> -->
+          <button type="submit" class="btn back_btn d-flex align-items-center gap-2" id="my_btn_send_message"
+            :disabled="loading" @click.prevent="submitForm()">{{
+              loading ?
+              'Sending...' : 'Send' }}</button>
+        </div>
+      </form>
+
     </div>
   </div>
 </template>
@@ -157,5 +156,4 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/apartmentView.scss';
-
 </style>
