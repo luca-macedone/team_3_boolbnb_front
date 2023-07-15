@@ -1,11 +1,13 @@
 <script>
 import { state } from '../state.js';
 import ApartmentCard from '../components/ApartmentCard.vue';
+import AllApartmentMap from '../components/AllApartmentMap.vue';
 
 export default {
     name: "SearchView",
     components: {
         ApartmentCard,
+        AllApartmentMap
     },
     data() {
         return {
@@ -48,7 +50,7 @@ export default {
         this.state.getServices();
     },
     async mounted() {
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -150,8 +152,34 @@ export default {
                     :beds="apartment.beds" :rooms="apartment.rooms" :full_address="apartment.full_address"
                     :image="apartment.image" :slug="apartment.slug" />
             </div>
+            <section class="hidden maps">
+                <AllApartmentMap></AllApartmentMap>
+            </section>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 50vh;
+    width: 100%;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 0.6s;
+}
+
+.hidden .maps {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(+100%);
+    transition: all 0.6s;
+    width: 100%;
+}
+</style>
