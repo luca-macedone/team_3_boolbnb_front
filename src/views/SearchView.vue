@@ -65,7 +65,7 @@ export default {
 
         await this.state.getApartments(); // Aspetta che apartments non sia più null
 
-        console.log(state.apartments);
+        // console.log(state.apartments);
     }
 
 }
