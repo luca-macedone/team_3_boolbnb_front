@@ -47,7 +47,7 @@ export default {
         }
     },
     mounted() {
-        this.state.getServices();
+        
     },
     async mounted() {
 
@@ -63,7 +63,8 @@ export default {
         const hidden_elements = document.querySelectorAll('.hidden');
         hidden_elements.forEach((el) => observer.observe(el));
 
-        await this.state.getApartments(); // Aspetta che apartments non sia più null
+         this.state.getApartments(); // Aspetta che apartments non sia più null
+         this.state.getServices();
 
         // console.log(state.apartments);
     }
