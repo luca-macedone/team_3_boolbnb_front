@@ -107,12 +107,12 @@ export default {
             axios.get('https://api.ipify.org/?format=json')
                 .then(response => {
                     const apartmentId = this.apartment.id;
-                    console.log(response);
+                    //console.log(response);
                     const data = {
                         apartment_id: apartmentId,
                         ip: response.data.ip,
                     };
-                    console.log(data, 'sto prendendo i dati');
+                    //console.log(data, 'sto prendendo i dati');
 
                     axios.post(this.base_API + 'api/views', data)
                         .then(response => {
@@ -120,7 +120,7 @@ export default {
                                 this.errors = response.data.errors;
                                 console.log(this.errors);
                             } else {
-                                console.log(data, 'sto passando i dati al db');
+                                //console.log(data, 'sto passando i dati al db');
                             }
                         })
                         .catch(error => {
@@ -163,7 +163,7 @@ export default {
                 this.loading = false;
             });
         this.sendViewData();
-        console.log(this.sendViewData);
+        //console.log(this.sendViewData);
     },
     computed() {
         this.initializeMap();
@@ -229,14 +229,14 @@ export default {
 
             </div>
         </div>
-        <section class=" hidden row h-100" >
+        <section class=" hidden row h-100">
             <div class="col-12 col-md-8">
                 <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
             </div>
             <div class="col-12 col-md-4 align-self-start message_card">
                 <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
             </div>
-           
+
         </section>
         <section class="hidden maps">
             <MapSingleApartment :apartment="apartment"></MapSingleApartment>
