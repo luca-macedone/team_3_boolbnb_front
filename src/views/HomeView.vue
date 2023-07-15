@@ -41,10 +41,6 @@ export default {
     <Jumbotron></Jumbotron>
   </div>
 
-  <BannerHome></BannerHome>
-
-
-
   <div class="container d-flex justify-content-center">
     <div class="row justify-content-center w-100" v-if="state.apartments && state.apartments.length > 0">
       <section id="section_home" class="sec_2 hidden d-flex flex-column w-100 align-items-center">
@@ -69,7 +65,7 @@ export default {
 
       </section>
 
-
+      <BannerHome></BannerHome>
 
     </div>
 
