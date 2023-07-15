@@ -69,7 +69,7 @@ export default {
 <template>
   <div class="d-flex flex-column">
     <div class="col-12 img-wrapper-jumbo">
-      <img src="/jumbo_2.png" alt="jumbotron house image" class="rounded-3">
+      <img src="/homepage_slogan.png" alt="jumbotron house image" class="rounded-3">
     </div>
 
     <!-- search ------------------>

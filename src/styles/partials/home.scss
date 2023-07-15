@@ -142,7 +142,7 @@
 
 .dashboard_jumbotron {
   background-color: $bnb-light;
-  background-image: url("/banner-home.jpg");
+  background-image: url("/banner_1.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -176,7 +176,7 @@
   display: grid;
   place-items: center;
   align-content: center;
-  min-height: 100vh;
+  // min-height: 100vh;
 }
 
 #section_search {
