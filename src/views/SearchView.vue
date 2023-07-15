@@ -45,22 +45,35 @@ export default {
         }
     },
     mounted() {
-        this.state.getServices()
+        this.state.getServices();
     },
+    async mounted() {
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+        const hidden_elements = document.querySelectorAll('.hidden');
+        hidden_elements.forEach((el) => observer.observe(el));
+
+        await this.state.getApartments(); // Aspetta che apartments non sia più null
+
+        console.log(state.apartments);
+    }
+
 }
 </script>
 
 <template>
-    <div class="p-5 research_banner">
-        <div class="container py-3 ">
-            <h1 class="display-5 fw-semibold m-0">Advanced Research</h1>
-            <!-- <p class="col-md-8 fs-4"></p> -->
-            <!-- <button class="btn btn-primary btn-lg" type="button">Example button</button> -->
-        </div>
-    </div>
     <div class="container-fluid body_container p-0" id="advanced_research">
-        <nav class="p-3 p-lg-5">
-            <div class="container">
+        <nav class="p-3 p-lg-5 research_banner">
+            <div class="container ">
+                <h1 class="display-5 fw-semibold m-0">Advanced Research</h1>
                 <div class="d-flex align-items-center gap-3">
                     <!-- ! da inserire @keyup="state.getSuggestions(search)" una volta che il datalist dei suggerimenti funzionera' -->
                     <input type="text" class="form-control searchbar_input" v-model="search" list="suggestions"
