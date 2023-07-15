@@ -29,7 +29,7 @@ export default {
 					<div class="col-12 col-md-6 col-lg-3">
 						<!-- <h2>BOOL BNB</h2> -->
 						<div class="footer_logo_wrapper d-flex justify-content-center justify-content-md-start">
-							<img class="d-inline-flex" src="/public/full_logo_horizontal.svg" alt="">
+							<img class="d-inline-flex" src="/full_logo_horizontal.svg" alt="">
 						</div>
 
 						<ul class="d-flex flex-column align-items-center align-items-md-start gap-3 mt-4">
