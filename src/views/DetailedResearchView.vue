@@ -118,7 +118,7 @@ export default {
                         .then(response => {
                             if (!response.data.success) {
                                 this.errors = response.data.errors;
-                                console.log(this.errors);
+                                // console.error(this.errors);
                             } else {
                                 //console.log(data, 'sto passando i dati al db');
                             }
@@ -175,9 +175,9 @@ export default {
 <style></style>
 
 <template>
-    <div class="container mt-5 p-0">
-        <div class="row mt-5 align-items-center">
-            <div class="col-12 p-0 title_apartment">
+    <div class="container mt-5">
+        <div class="row mt-5 justify-content-center align-items-center">
+            <div class="col-12 title_apartment">
                 <div class="pb-3 d-flex justify-content-between align-items-center mb-2">
                     <router-link to="/search" class="btn back_btn d-flex align-items-center gap-2 shadow">
                         <i class="fa-solid fa-arrow-left-long"></i>
@@ -203,44 +203,43 @@ export default {
                     </h4>
 
                 </div>
-                <div class="col-12 d-flex justify-content-between mb-3">
-                    <div v-if="apartment">
-                        <h1 class=" fw-semibold text_bnb_dark">{{ apartment.title }}</h1>
-                        <p class="text_bnb_dark">
+
+            </div>
+            <div v-if="apartment" class="col-12 d-flex justify-content-center w-100 pb-4 img_apartment">
+                <div class="detailed_apartment_img_wrapper">
+                    <img class="img-fluid card border-0 card_shadow img_size"
+                        :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="" @click="toggleFullscreen()">
+
+                    <div class="detailed_apartment_title_box p-2 px-3" v-if="apartment">
+                        <h1 class=" fw-semibold text_bnb_light">{{ apartment.title }}</h1>
+                        <p class="text_bnb_light p-0 m-0">
                             {{ apartment.full_address }}
                         </p>
                     </div>
 
                 </div>
 
-            </div>
-        </div>
-        <div class="row">
-            <div v-if="apartment" class="col-12 d-flex justify-content-center px-0 pb-4 img_apartment">
-
-                <img class="img-fluid card border-0 card_shadow img_size"
-                    :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="" @click="toggleFullscreen()">
-
                 <div class="fullscreen-overlay" v-if="showFullscreen" @click="toggleFullscreen">
                     <div class="fullscreen-image-container">
-                        <img class="fullscreen-image" :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="">
+                        <img class="fullscreen-image rounded-2" :src="'http://127.0.0.1:8000/storage/' + apartment.image"
+                            alt="">
                     </div>
                 </div>
 
             </div>
-        </div>
-        <section class=" hidden row h-100">
-            <div class="col-12 col-md-8">
-                <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
-            </div>
-            <div class="col-12 col-md-4 align-self-start message_card">
-                <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
-            </div>
+            <section class="mx-0 px-0 hidden row h-100">
+                <div class="col-12 col-md-8">
+                    <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
+                </div>
+                <div class="col-12 col-md-4 mb-0 pb-0 align-self-start message_card">
+                    <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
+                </div>
 
-        </section>
-        <section class="hidden maps">
-            <MapSingleApartment :apartment="apartment"></MapSingleApartment>
-        </section>
+            </section>
+            <section class="hidden maps">
+                <MapSingleApartment :apartment="apartment"></MapSingleApartment>
+            </section>
+        </div>
     </div>
 </template>
 
