@@ -91,13 +91,13 @@ export default {
                         <input list="range_markers" type="range" class="form-range" v-model="range" min="1" max="30"
                             step="1" id="distance_range_input">
                         <datalist id="range_markers">
-                            <!-- <option value="10" label="10"></option>
+                            <option value="1" label="1"></option>
+                            <option value="5" label="5"></option>
+                            <option value="10" label="10"></option>
+                            <option value="15" label="15"></option>
                             <option value="20" label="20"></option>
+                            <option value="25" label="25"></option>
                             <option value="30" label="30"></option>
-                            <option value="40" label="40"></option>
-                            <option value="50" label="50"></option>
-                            <option value="60" label="60"></option>
-                            <option value="70" label="70"></option> -->
                         </datalist>
                     </div>
                 </div>
