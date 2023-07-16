@@ -153,6 +153,7 @@ export default {
                     this.apartment = response.data.result[0];
                     //console.log(response);
                     this.loading = true;
+                    this.sendViewData()
                     this.initializeMap();
                 } else {
                     this.$router.push({ name: 'NotFound' })
