@@ -38,7 +38,7 @@ export default {
 
 <template>
   <div class="container">
-    <Jumbotron></Jumbotron>
+    <Jumbotron />
   </div>
 
   <div class="container d-flex justify-content-center">
@@ -58,16 +58,15 @@ export default {
 
         <div class="row g-3 mt-3 mb-5 w-100 " v-if="state.apartments">
 
-          <HomeCard v-for="(apartment, index) in state.apartments.slice(0, 6)" :apartment="apartment" :index="index">
-          </HomeCard>
+          <HomeCard v-for="(apartment, index) in state.apartments.slice(0, 6)" :apartment="apartment" :index="index" />
 
         </div>
 
       </section>
 
-      <BannerHome></BannerHome>
-
     </div>
+
+    <BannerHome />
 
 
   </div>
