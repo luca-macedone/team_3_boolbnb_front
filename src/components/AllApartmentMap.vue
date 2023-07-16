@@ -40,7 +40,7 @@ export default {
       });
 
       this.data.forEach((apartment) => {
-        console.log(apartment);
+        // console.log(apartment);
 
         const { longitude, latitude, title, full_address, image, slug } = apartment;
         const size = 50;
