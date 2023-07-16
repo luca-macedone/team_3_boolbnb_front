@@ -33,9 +33,8 @@ export default {
 						</div>
 
 						<ul class="d-flex flex-column align-items-center align-items-md-start gap-3 mt-4">
-							<li><a href="#">Advanced search</a> </li>
-							<li><a href="#">Rent an apartment</a> </li>
-							<li><a href="#">Sponsorship</a> </li>
+							<li><a href="http://localhost:5174/search">Advanced search</a> </li>	
+							<li><a href="http://127.0.0.1:8000/user/apartments">Sponsorship</a> </li>
 							<li><a href="#">Home page</a> </li>
 
 
@@ -99,9 +98,9 @@ export default {
 							<div class="d-flex align-items-center gap-4">
 
 
-								<span class="align-self-center"><i class="fa-solid fa-globe"></i> Italiano (IT)</span>
+								<span class="align-self-center"><i class="fa-solid fa-globe"></i> English (EN)</span>
 								<span class="align-self-center">€ EUR</span>
-								<span class="align-self-center">Supporto e Risorse</span>
+								<span class="align-self-center">Support and resource</span>
 
 
 
