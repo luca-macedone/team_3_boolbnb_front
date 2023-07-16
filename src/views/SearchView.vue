@@ -47,10 +47,21 @@ export default {
         }
     },
     mounted() {
-        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                //console.log(entry)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        })
+        const hidden_elements = document.querySelectorAll('.hidden');
+        hidden_elements.forEach((el) => observer.observe(el));
 
-         this.state.getApartments(); // Aspetta che apartments non sia più null
-         this.state.getServices();
+        this.state.getApartments(); // Aspetta che apartments non sia più null
+        this.state.getServices();
 
         // console.log(state.apartments);
     },
