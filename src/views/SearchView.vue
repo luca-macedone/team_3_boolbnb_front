@@ -2,6 +2,8 @@
 import { state } from '../state.js';
 import ApartmentCard from '../components/ApartmentCard.vue';
 import AllApartmentMap from '../components/AllApartmentMap.vue';
+// import debounce from 'lodash.debounce';
+
 
 export default {
     name: "SearchView",
@@ -17,9 +19,9 @@ export default {
             base_API: 'http://127.0.0.1:8000/',
             store: 'storage/',
             tomTom_API: 'https://api.tomtom.com/search/2/search/',
-            key: '.json?key=gS8mw4nOWKsFSgJLqBsDJopb3q9ql31M&limit=1',
+            key: '.json?key=SZ8VhlKG9UF902HxyutPGiz8KtHv7kv2&limit=1',
             search: '',
-            range: 20,
+            range: "20",
             rooms: null,
             beds: null,
             services: null,
@@ -86,14 +88,16 @@ export default {
 
                     <div class="">
                         <label for="distance_range_input" class="form-label">Range of research (Km)</label>
-                        <input list="range_markers" type="range" class="form-range" v-model="range" min="10" max="50"
-                            step="10" id="distance_range_input">
+                        <input list="range_markers" type="range" class="form-range" v-model="range" min="1" max="30"
+                            step="1" id="distance_range_input">
                         <datalist id="range_markers">
+                            <option value="1" label="1"></option>
+                            <option value="5" label="5"></option>
                             <option value="10" label="10"></option>
+                            <option value="15" label="15"></option>
                             <option value="20" label="20"></option>
+                            <option value="25" label="25"></option>
                             <option value="30" label="30"></option>
-                            <option value="40" label="40"></option>
-                            <option value="50" label="50"></option>
                         </datalist>
                     </div>
                 </div>
