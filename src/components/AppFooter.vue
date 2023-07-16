@@ -22,8 +22,8 @@ export default {
 	<!-- footerone -->
 
 	<footer>
-		<section class="">
-			<div class="container hidden container_width">
+		<section class="mt-5">
+			<div class="container hidden container_width ">
 				<div class="row mt-5 pt-5">
 
 					<div class="col-12 col-md-6 col-lg-3">
