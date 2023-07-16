@@ -24,6 +24,18 @@
         background: $bnb-light;
         border: 1px solid $bnb-accent;
     }
+    .search_radius_range {
+        input[type="range"]::-webkit-slider-runnable-track {
+            background-color: $bnb-light !important;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            background: $bnb-accent;
+        }
+        input[type="range"]::-webkit-slider-thumb:focus {
+            box-shadow: none !important;
+        }
+    }
 
     .searchbar_btn {
         background-color: $bnb-light;
