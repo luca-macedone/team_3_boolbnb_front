@@ -10,33 +10,25 @@ export default {
       store: 'storage/',
       showFullscreen: false,
       copyStatus: '',
+      data: null,
     }
   },
   mounted() {
     this.getApartments();
   },
   methods: {
-    async getApartments(page = 1) {
+    async getApartments() {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/apartments?page=${page}`);
-        const data = response.data;
-
-        // Aggiungi gli appartamenti alla lista esistente
-        this.apartments = [...this.apartments, ...data.apartments.data];
-
-        // Se c'è una pagina successiva, richiama ricorsivamente il metodo getApartments
-        if (data.apartments.next_page_url) {
-          const nextPage = page + 1;
-          this.getApartments(nextPage);
-        } else {
-          // Se non c'è una pagina successiva, inizializza la mappa
-          this.initializeMap(this.apartments);
-        }
+        const response = await axios.get(`http://127.0.0.1:8000/api/apartments/all`);
+        this.data = response.data.result;
+        //console.log(this.data);
+        this.initializeMap()
+        //console.log(response.data.result);
       } catch (error) {
         console.log(error);
       }
     },
-    initializeMap(apartments) {
+    initializeMap() {
       const center = [12.56738, 41.87194]; // Coordinate di Roma
       const zoom = 4.9;
 
@@ -47,7 +39,9 @@ export default {
         zoom: zoom,
       });
 
-      apartments.forEach((apartment) => {
+      this.data.forEach((apartment) => {
+        console.log(apartment);
+
         const { longitude, latitude, title, full_address, image, slug } = apartment;
         const size = 50;
         const markerCenter = [longitude, latitude];
