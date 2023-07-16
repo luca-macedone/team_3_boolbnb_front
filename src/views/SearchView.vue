@@ -62,7 +62,7 @@ export default {
         const hidden_elements = document.querySelectorAll('.hidden');
         hidden_elements.forEach((el) => observer.observe(el));
 
-        this.state.getApartments(); // Aspetta che apartments non sia più null
+        this.state.getRandomApartments(); // Aspetta che apartments non sia più null
         this.state.getServices();
 
         // console.log(state.apartments);
@@ -74,7 +74,7 @@ export default {
 <template>
     <div class="container-fluid body_container p-0" id="advanced_research">
         <nav class="p-3 p-lg-5 research_banner">
-            <div class="container ">
+            <div class="container mt-6">
                 <h1 class="display-5 fw-semibold m-0">Advanced Research</h1>
                 <div class="d-flex align-items-center gap-3">
                     <!-- ! da inserire @keyup="state.getSuggestions(search)" una volta che il datalist dei suggerimenti funzionera' -->
@@ -86,9 +86,9 @@ export default {
                             suggestion.segmentents }}</option>
                     </datalist> -->
 
-                    <div class="">
+                    <div class="search_radius_range">
                         <label for="distance_range_input" class="form-label">Range of research (Km)</label>
-                        <input list="range_markers" type="range" class="form-range" v-model="range" min="1" max="30"
+                        <input list="range_markers" type="range" class="form-range " v-model="range" min="1" max="30"
                             step="1" id="distance_range_input">
                         <datalist id="range_markers">
                             <option value="1" label="1"></option>
