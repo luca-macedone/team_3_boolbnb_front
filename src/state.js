@@ -21,7 +21,7 @@ export const state = reactive({
     topLeftPointLong: null,
     tomTom_API: 'https://api.tomtom.com/search/2/search/',
     tomTom_autocomplete_API: 'https://api.tomtom.com/search/2/autocomplete/',
-    key: '.json?key=gS8mw4nOWKsFSgJLqBsDJopb3q9ql31M',
+    key: '7tj6HpFmzIL9ehuGRFCkdCQ9dRTvgWkk',
     range_attribute: '&radius=',
     limit_attribute: '&limit=',
     language_attribute: '&language=',
@@ -85,9 +85,16 @@ export const state = reactive({
         // Reset apartments
         this.apartments = null;
         this.researchedApartments = null;
+        const url = `${this.tomTom_API + encodeURIComponent(fullAddress)}.json`
 
-        axios.get(this.tomTom_API + fullAddress + this.key + this.range_attribute + range + '000' + this.limit_attribute + '1')
-
+        axios.get(url, {
+            params: {
+                key: this.key,
+                radius: range + '000',
+                limit: 1,
+                typeahead: true,
+            }
+        })
             .then(response => {
                 /* console.log(response.data.results[0].viewport); */
                 this.btmRightPointLat = response.data.results[0].boundingBox.btmRightPoint.lat
