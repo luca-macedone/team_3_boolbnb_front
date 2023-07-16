@@ -176,9 +176,9 @@ export default {
 <style></style>
 
 <template>
-    <div class="container mt-5">
-        <div class="row mt-5 justify-content-center align-items-center">
-            <div class="col-12 title_apartment">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 mt-6 pt-5 title_apartment">
                 <div class="pb-3 d-flex justify-content-between align-items-center mb-2">
                     <router-link to="/search" class="btn back_btn d-flex align-items-center gap-2 shadow">
                         <i class="fa-solid fa-arrow-left-long"></i>
