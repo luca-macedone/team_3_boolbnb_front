@@ -71,6 +71,17 @@ export const state = reactive({
             });
     },
 
+    getRandomApartments() {
+        axios.get('http://127.0.0.1:8000/api/apartments/all')
+            .then(response => {
+                const result = response.data.result;
+                this.researchedApartments = result.slice(0, 12);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    },
+
     /**
      * Gets the tomtom gps data and send it to getApartments
      * @param {string} fullAddress 
