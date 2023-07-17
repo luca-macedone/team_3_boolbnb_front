@@ -152,7 +152,7 @@ export default {
             <div class="row g-3 m-5">
                 <ApartmentCard v-for="apartment in state.researchedApartments" :title="apartment.title"
                     :beds="apartment.beds" :rooms="apartment.rooms" :full_address="apartment.full_address"
-                    :image="apartment.image" :slug="apartment.slug" />
+                    :image="apartment.image" :slug="apartment.slug" :distance_from_point="apartment.distance_from_point" />
             </div>
             <section class="hidden maps">
                 <AllApartmentMap></AllApartmentMap>

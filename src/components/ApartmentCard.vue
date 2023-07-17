@@ -3,7 +3,7 @@ import { state } from '../state.js';
 import { RouterLink } from 'vue-router';
 export default {
     name: "ApartmentCard",
-    props: ["title", "beds", "rooms", "full_address", "image", "slug"],
+    props: ["title", "beds", "rooms", "full_address", "image", "slug", "distance_from_point"],
     data() {
         return {
             state,
@@ -32,9 +32,9 @@ export default {
                                     <span class="fw-semibold fs-3">{{ beds }}</span>
                                     <span> beds</span>
                                 </span>
-                                <span>
-                                    <span class="address fs-6">{{ full_address }}</span>
-                                    <span> mq</span>
+                                <span v-if="distance_from_point">
+                                    <i class="fa-solid fa-location-dot fs-3 me-2"></i>
+                                    <span class="address fs-3">{{ parseFloat(distance_from_point).toFixed(2) }}</span> Km
                                 </span>
                             </div>
                         </div>
