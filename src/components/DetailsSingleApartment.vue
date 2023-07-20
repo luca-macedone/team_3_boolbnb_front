@@ -64,7 +64,7 @@ export default {
 					Apartment Available
 					<div class="fs-6 text_italic">
 						Consider to send a message to the owner
-						<i class="fa-solid fa-arrow-alt-circle-right ms-3"></i>
+						<i class="fa-solid fa-arrow-alt-circle-right ms-3 d-none d-md-block"></i>
 					</div>
 				</div>
 
