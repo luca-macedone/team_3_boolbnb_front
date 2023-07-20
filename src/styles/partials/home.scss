@@ -3,7 +3,7 @@
 .search_box_home {
   height: 60px;
   padding: 1rem;
-  width: 75%;
+  width: 100%;
   background: $bnb-primary;
   position: relative;
   bottom: 1rem;
@@ -215,4 +215,10 @@
 
 .card_box:hover .star {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .search_box_home {
+    width: 75%;
+  }
 }

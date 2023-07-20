@@ -26,14 +26,14 @@ export default {
 			<div class="container hidden container_width ">
 				<div class="row mt-5 pt-5">
 
-					<div class="col-12 col-md-6 col-lg-3">
+					<div class="col-12 col-md-6 col-lg-3 mb-5">
 						<!-- <h2>BOOL BNB</h2> -->
 						<div class="footer_logo_wrapper d-flex justify-content-center justify-content-md-start">
 							<img class="d-inline-flex" src="/full_logo_horizontal.svg" alt="">
 						</div>
 
 						<ul class="d-flex flex-column align-items-center align-items-md-start gap-3 mt-4">
-							<li><a href="http://localhost:5174/search">Advanced search</a> </li>	
+							<li><a href="http://localhost:5174/search">Advanced search</a> </li>
 							<li><a href="http://127.0.0.1:8000/user/apartments">Sponsorship</a> </li>
 							<li><a href="#">Home page</a> </li>
 

@@ -12,7 +12,7 @@ export default {
 <template>
 	<div class="container  ">
 		<div class=" rounded-3 mt-3 shadow dashboard_jumbotron ">
-			<div class="bg_text rounded-3 p-5 mb-4">
+			<div class="bg_text rounded-3 p-3 p-md-5 mb-4">
 				<div class="container py-3 text_bnb_light">
 					<h1 class="display-5 fw-semibold mb-5">
 						Find the best places for your adventures!

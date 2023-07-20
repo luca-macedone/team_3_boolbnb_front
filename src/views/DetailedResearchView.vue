@@ -208,7 +208,7 @@ export default {
             </div>
             <div v-if="apartment" class="col-12 d-flex justify-content-center w-100 pb-4 img_apartment">
                 <div class="detailed_apartment_img_wrapper">
-                    <img class="img-fluid card border-0 card_shadow img_size"
+                    <img class="img-fluid card border-0 card_shadow img_size h-100"
                         :src="'http://127.0.0.1:8000/storage/' + apartment.image" alt="" @click="toggleFullscreen()">
 
                     <div class="detailed_apartment_title_box p-2 px-3" v-if="apartment">
@@ -229,10 +229,10 @@ export default {
 
             </div>
             <section class="mx-0 px-0 hidden row h-100">
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-8 mb-4 mb-lg-0">
                     <DetailsSingleApartment :apartment="apartment"></DetailsSingleApartment>
                 </div>
-                <div class="col-12 col-md-4 mb-0 pb-0 align-self-start message_card">
+                <div class="col-12 col-md-4 mb-4 mb-lg-0 pb-0 align-self-start message_card">
                     <MessageSingleApartment :apartment="apartment"></MessageSingleApartment>
                 </div>
 

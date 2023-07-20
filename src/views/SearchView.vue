@@ -76,7 +76,7 @@ export default {
         <nav class="p-3 p-lg-5 research_banner">
             <div class="container mt-6">
                 <h1 class="display-5 fw-semibold m-0">Advanced Research</h1>
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex flex-column flex-lg-row align-items-center gap-3">
                     <!-- ! da inserire @keyup="state.getSuggestions(search)" una volta che il datalist dei suggerimenti funzionera' -->
                     <input type="text" class="form-control searchbar_input" v-model="search" list="suggestions"
                         id="location_input" placeholder="Where you want to go?">
@@ -88,7 +88,7 @@ export default {
 
                     <div class="search_radius_range">
                         <label for="distance_range_input" class="form-label">Range of research (Km)</label>
-                        <input list="range_markers" type="range" class="form-range " v-model="range" min="1" max="30"
+                        <input list="range_markers" type="range" class="form-range w-100" v-model="range" min="1" max="30"
                             step="1" id="distance_range_input">
                         <datalist id="range_markers">
                             <option value="1" label="1"></option>
@@ -149,7 +149,7 @@ export default {
             </div>
         </nav>
         <div class="container">
-            <div class="row g-3 m-5">
+            <div class="row g-3 my-2">
                 <ApartmentCard v-for="apartment in state.researchedApartments" :title="apartment.title"
                     :beds="apartment.beds" :rooms="apartment.rooms" :full_address="apartment.full_address"
                     :image="apartment.image" :slug="apartment.slug" :distance_from_point="apartment.distance_from_point" />
