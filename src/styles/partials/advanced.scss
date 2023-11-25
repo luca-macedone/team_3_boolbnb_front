@@ -1,0 +1,83 @@
+@import "./variables";
+
+.research_banner {
+    // background-color: $bnb-primary;
+    background-image: url("/wave_animated.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top: 3px solid $bnb-accent;
+    border-bottom: 3px solid $bnb-accent;
+}
+
+#advanced_research {
+    min-height: calc(100vh - 468px - 60px);
+
+    nav {
+        background-color: rgba($bnb-dark, 0.25);
+    }
+
+    .searchbar_input {
+        // padding: 1rem;
+        // width: 75%;
+        border-radius: 0.75rem;
+        background: $bnb-light;
+        border: 1px solid $bnb-accent;
+    }
+    .search_radius_range {
+        input[type="range"]::-webkit-slider-runnable-track {
+            background-color: $bnb-light !important;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            background: $bnb-accent;
+        }
+        input[type="range"]::-webkit-slider-thumb:focus {
+            box-shadow: none !important;
+        }
+    }
+
+    .searchbar_btn {
+        background-color: $bnb-light;
+        color: $bnb-dark;
+        border: 1px solid $bnb-accent;
+        padding: 0.35rem 1.2rem;
+        transition: 0.25s all ease-in-out;
+        border-radius: 0.75rem;
+        &:hover {
+            background-color: $bnb-accent;
+            color: $bnb-dark;
+            // scale: 1.2;
+            scale: 1.08;
+        }
+    }
+
+    .searchbar_btn.search {
+        background-color: $bnb-accent;
+
+        flex-grow: 2;
+    }
+
+    datalist {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .service_check {
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .service_check.marked {
+        background-color: $bnb-accent;
+        color: $bnb-dark;
+    }
+
+    .searched_apartment {
+        * {
+            text-decoration: none !important;
+        }
+        border-radius: 0.75rem;
+    }
+}

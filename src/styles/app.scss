@@ -1,0 +1,34 @@
+@import "/node_modules/bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap%27');
+
+@import './partials/variables.scss';
+@import './partials/common.scss';
+@import './partials/footer.scss';
+@import './partials/header.scss';
+@import './partials/home.scss';
+@import './partials/advanced.scss';
+@import './partials/detailed.scss';
+
+
+
+
+
+.img-wrapper {
+    height: 100px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: fill;
+    }
+}
+
+.mt-custom{
+    margin-top: 9%;
+}
+
+.z_index{
+    z-index: 10;
+}

@@ -1,0 +1,171 @@
+@import "./variables.scss";
+
+.title_apartment {
+	color: $bnb-dark;
+
+	h1 {
+		font-weight: bolder;
+	}
+}
+
+.img_apartment {
+	.card_shadow {
+		box-shadow: 1px 3px 8px $bnb-dark;
+
+		object-position: center;
+		object-fit: cover;
+		border-radius: 0.75rem;
+		background-position: center;
+	}
+
+	.fullscreen-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba($bnb-dark, 0.5);
+		backdrop-filter: blur(5px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 9999;
+		cursor: pointer;
+	}
+
+	.fullscreen-image-container {
+		max-width: 90%;
+		max-height: 90%;
+		overflow: auto;
+	}
+
+	.fullscreen-image {
+		display: block;
+		max-width: 100%;
+		max-height: 100%;
+		margin: auto;
+	}
+}
+
+.map_text {
+	color: $bnb-dark;
+}
+
+.img_size {
+	max-height: 450px;
+	object-fit: cover;
+	min-width: 100%;
+}
+
+.card_show {
+	color: $bnb-light;
+	height: 100%;
+	//background-color: $bnb-primary;
+	border-radius: 0.75rem;
+	box-shadow: 1px 3px 8px rgba(48, 48, 48, 0.6);
+
+	.ul_details {
+		line-height: 2rem;
+	}
+
+	.hr_margin {
+		margin-left: 2rem;
+		margin-right: 2rem;
+		border-bottom: 1px solid $bnb-dark;
+	}
+}
+
+.col_message {
+	.card_message {
+		border-radius: 0.75rem;
+		background-color: $bnb-light;
+
+		input {
+			background-color: white;
+			border: none;
+		}
+
+		textarea {
+			background-color: white;
+			border: none;
+		}
+	}
+}
+
+.card_maps {
+	box-shadow: 1px 3px 8px rgba(48, 48, 48, 0.4);
+	border-radius: 0.75rem;
+
+	#map {
+		border-radius: 0.75rem;
+	}
+}
+
+.full_adress {
+	color: $bnb-dark;
+	background-color: transparent;
+}
+
+.marker-border {
+	background-color: rgb(201, 72, 12);
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+}
+
+.text_color {
+	color: $bnb-dark;
+}
+
+.message_card {
+	position: sticky;
+	top: 4rem;
+	right: 0;
+	margin-bottom: 0.5rem;
+}
+
+.my_badge {
+	background-color: $bnb-info;
+	min-width: 60px;
+	border-radius: 0.75rem;
+}
+
+.list_size {
+	max-height: 100%;
+}
+
+.list_item_size {
+	min-width: 80px;
+	min-height: 50px;
+}
+
+.detailed_apartment_img_wrapper {
+	height: 450px;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 0.75rem;
+	position: relative;
+	img {
+		object-fit: cover;
+	}
+
+	.detailed_apartment_title_box {
+		position: absolute;
+		bottom: 2rem;
+		left: 2rem;
+		max-width: calc(100% - 4rem);
+		background-color: rgba($bnb-dark, 0.6);
+		border-radius: 0.75rem;
+	}
+}
+
+.text_italic {
+	font-style: italic;
+}
+
+#single_apartment_details {
+	.detail_card {
+		background-color: $bnb-light;
+		border-radius: 0.75rem;
+	}
+}
